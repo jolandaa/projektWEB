@@ -1,0 +1,50 @@
+@use '~src/app-styles' as app;
+
+section {
+    padding-left: 0;
+    padding-right: 0;
+    min-width: 407px;
+    max-height: app.pxToRem(500px);
+    position: relative;
+}
+
+.mat-dialog-title {
+   display: flex;
+   justify-content: center;
+}
+
+.mat-dialog-content {
+    padding: 0;
+    margin: 0 24px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    color: var(--light-color-300);
+}
+
+.mat-dialog-actions {
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    margin-right: 40px;
+    margin-left: 40px;
+
+    app-solid-button {
+        flex: 1;
+    }
+}
+
+.mat-icon-button {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+
+.spacer {
+    width: app.$space-2xs;
+}
+
+.mat-body-1 {
+    text-align: center;
+}

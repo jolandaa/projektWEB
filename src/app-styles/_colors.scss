@@ -1,0 +1,133 @@
+$dark-primary-text: rgba(black, 0.87);
+$light-primary-text: white;
+$primary-color: #f2f3f6;
+$accent-color: #5544b7;
+$accent-color-25: #f3f1ff;
+$accent-color-75: #f2f3f6;
+$accent-color-100: #a197d8;
+$accent-color-200: #9685f8;
+$accent-color-300: #24186a;
+$tertiary-color: #f89c7f;
+$light-color: #ffffff;
+$light-color-25: #e2e5f8;
+$light-color-50: #e9e6fe;
+$light-color-75: #666b8a;
+$light-color-100: #bcbbce;
+$light-color-150: #cad2de;
+$light-color-200: #e5e5e5;
+$light-color-300: #7e83a1;
+$green-color: #b9b3df;
+$green-color-100: #67cd4e;
+$blue-color: #0f8bfd;
+$red-color: #dd1818;
+$dark-color: #202222;
+$santas-grey: #a1a3aa;
+$crimson-red: #dd1818;
+$cornflower-blue: #f0edff;
+$alabaster: #fbfbfb;
+$black: #000;
+$catskill-white: #e7ecf4;
+$link-water: #E9ECF8;
+
+:root {
+  --client-primary-color: #3B68B1;
+  --client-secondary-color: #ED1E3B;
+  --client-text-color: #636269;
+  
+  --primary-color: #f2f3f6;
+  --accent-color: #5544b7;
+  --accent-color-25: #f3f1ff;
+  --accent-color-50: #eeeeff;
+  --accent-color-75: #989fc6;
+  --accent-color-100: #a197d8;
+  --accent-color-200: #9685f8;
+  --accent-color-300: #24186a;
+  --tertiary-color: #f89c7f;
+  --light-color: #ffffff;
+  --light-color-25: #e2e5f8;
+  --light-color-50: #e9e6fe;
+  --light-color-75: #666b8a;
+  --light-color-100: #bcbbce;
+  --light-color-150: #cad2de;
+  --light-color-200: #e5e5e5;
+  --light-color-300: #7e83a1;
+  --green-color: #b9b3df;
+  --green-color-100: #67cd4e;
+  --blue-color: #0f8bfd;
+  --red-color: #dd1818;
+  --dark-color: #202222;
+  --santas-grey: #a1a3aa;
+  --crimson-red: #dd1818;
+  --cornflower-blue: #f0edff;
+  --alabaster: #fbfbfb;
+  --black: #000;
+  --white: white;
+  --catskill-white: #{$catskill-white};
+  --link-water: #{$link-water};
+}
+
+$primary-palette: (
+  50: #ffffff,
+  100: #ffffff,
+  200: #ffffff,
+  300: #ffffff,
+  400: #ffffff,
+  500: #f2f3f6,
+  600: #e3e5ec,
+  700: #d4d7e1,
+  800: #c5c9d7,
+  900: #b6bbcc,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffffff,
+  A700: #a7adc2,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$accent-palette: (
+  50: #211b47,
+  100: #2a215a,
+  200: #32286d,
+  300: #3b2f7f,
+  400: #443692,
+  500: #4c3da4,
+  600: #6555c0,
+  700: #7567c7,
+  800: #867ace,
+  900: #978dd4,
+  A100: #6555c0,
+  A200: #5544b7,
+  A400: #4c3da4,
+  A700: #a89fdb,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
