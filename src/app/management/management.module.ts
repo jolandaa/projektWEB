@@ -14,6 +14,9 @@ import { EditSchoolComponent } from './components/schools/edit-school/edit-schoo
 import { AddSchoolComponent } from './components/schools/add-school/add-school.component';
 import {ConfirmModalComponent} from "../shared/modals/confirm-modal";
 import {MatDialogModule} from "@angular/material/dialog";
+import { SystemAdminUsersComponent } from './components/system-admin-users/system-admin-users.component';
+import { AddSystemAdminUsersComponent } from './components/system-admin-users/add-system-admin-users/add-system-admin-users.component';
+import { EditSystemAdminUsersComponent } from './components/system-admin-users/edit-system-admin-users/edit-system-admin-users.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import {MatDialogModule} from "@angular/material/dialog";
     ProfileComponent,
     EditSchoolComponent,
     AddSchoolComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    SystemAdminUsersComponent,
+    AddSystemAdminUsersComponent,
+    EditSystemAdminUsersComponent
   ],
   imports: [
     ManagementRoutingModule,

@@ -8,6 +8,13 @@ import {EditSchoolComponent} from "./components/schools/edit-school/edit-school.
 import {AddSchoolComponent} from "./components/schools/add-school/add-school.component";
 import {RoleGuard} from "../auth/guards/role.guard";
 import {AuthGuard} from "../auth/guards/auth.guard";
+import {
+  AddSystemAdminUsersComponent
+} from "./components/system-admin-users/add-system-admin-users/add-system-admin-users.component";
+import {
+  EditSystemAdminUsersComponent
+} from "./components/system-admin-users/edit-system-admin-users/edit-system-admin-users.component";
+import {SystemAdminUsersComponent} from "./components/system-admin-users/system-admin-users.component";
 
 const routes: Routes = [
   {
@@ -32,6 +39,19 @@ const routes: Routes = [
       },{
         path: 'addSchool',
         component: AddSchoolComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "admin-users",
+        component: SystemAdminUsersComponent,
+        canActivate: [AuthGuard]
+      },{
+        path: 'edit-admin-users/:id',
+        component: EditSystemAdminUsersComponent,
+        canActivate: [AuthGuard]
+      },{
+        path: 'add-admin-users',
+        component: AddSystemAdminUsersComponent,
         canActivate: [AuthGuard]
       },
       {

@@ -34,7 +34,7 @@ export class SigninComponent implements OnInit {
           if (user.role == UserRoles.SystemAdmin) {
             this.router.navigate(['/']);
           } else {
-            this.router.navigate(['/school']);
+            this.router.navigate(['/client']);
           }
         } else {
 
