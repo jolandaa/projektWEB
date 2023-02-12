@@ -1,0 +1,28 @@
+<form class="example-form" [formGroup]="editClassForm" (ngSubmit)="editClass()">
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="description">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Country</mat-label>
+      <input matInput formControlName="year">
+    </mat-form-field></td>
+  </tr></table>
+
+
+  <button type="submit">Edit</button>
+</form>

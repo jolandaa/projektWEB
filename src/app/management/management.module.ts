@@ -17,6 +17,13 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { SystemAdminUsersComponent } from './components/system-admin-users/system-admin-users.component';
 import { AddSystemAdminUsersComponent } from './components/system-admin-users/add-system-admin-users/add-system-admin-users.component';
 import { EditSystemAdminUsersComponent } from './components/system-admin-users/edit-system-admin-users/edit-system-admin-users.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatSelectModule} from "@angular/material/select";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -32,6 +39,7 @@ import { EditSystemAdminUsersComponent } from './components/system-admin-users/e
     EditSystemAdminUsersComponent
   ],
   imports: [
+    CommonModule,
     ManagementRoutingModule,
     CoreModule,
     MatToolbarModule,
@@ -40,6 +48,12 @@ import { EditSystemAdminUsersComponent } from './components/system-admin-users/e
     MatButtonModule,
     MatTableModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    MatSelectModule,
   ],
   providers: [
 

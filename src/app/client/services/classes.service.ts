@@ -1,54 +1,55 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {SchoolListModel} from "../../management/models/school-list.model";
 import {catchError, map, of, tap} from "rxjs";
-import {SchoolListModel} from "../models/school-list.model";
 
 @Injectable({
   providedIn: 'root'
 })
-export class SchoolsService {
+export class ClassesService {
 
   baseUrl = 'http://localhost/WEB/backend/';
 
   constructor(private http: HttpClient) { }
 
-  getSchoolsList() {
-    return this.http.get<SchoolListModel>(this.baseUrl + 'school/list.php').pipe(
+  getClassesList(school_id: any) {
+    return this.http.get<SchoolListModel>(this.baseUrl + 'classes/list.php?school_id=' + school_id).pipe(
       map((data: SchoolListModel) => data),
       tap((data: SchoolListModel) => data),
       catchError((error) => of(error))
     );
   }
 
-  getSchoolById(school_id: any) {
-    return this.http.get<any>(this.baseUrl + 'school/getSchoolById.php?school_id=' + school_id).pipe(
+  getCLassById(class_id: any) {
+    return this.http.get<any>(this.baseUrl + 'classes/getClassById.php?class_id=' + class_id).pipe(
       map((data: any) => data),
       tap((data: any) => data),
       catchError((error) => of(error))
     );
   }
 
-  addSchool(body: any) {
-    return this.http.post<any>(this.baseUrl + 'school/add.php', body).pipe(
+  addClass(body: any) {
+    return this.http.post<any>(this.baseUrl + 'classes/add.php', body).pipe(
       map((data: any) => data),
       tap((data: any) => data),
       catchError((error) => of(error))
     );
   }
 
-  deleteSchool(school_id: string) {
-    return this.http.post<any>(this.baseUrl + 'school/delete.php', {school_id}).pipe(
+  deleteClass(class_id: string) {
+    return this.http.post<any>(this.baseUrl + 'classes/delete.php', {class_id}).pipe(
       map((data: any) => data),
       tap((data: any) => data),
       catchError((error) => of(error))
     );
   }
 
-  editSchool(body: any) {
-    return this.http.post<any>(this.baseUrl + 'school/edit.php', body).pipe(
+  editClass(body: any) {
+    return this.http.post<any>(this.baseUrl + 'classes/edit.php', body).pipe(
       map((data: any) => data),
       tap((data: any) => data),
       catchError((error) => of(error))
     );
   }
+
 }

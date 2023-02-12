@@ -25,13 +25,18 @@ export class RoleGuard implements CanActivate {
 
     const userParsed: User = JSON.parse(user);
 
-    if(userParsed.role === UserRoles.SystemAdmin) {
-
+    if(state.url.includes('admin') && userParsed.role === UserRoles.SystemAdmin) {
+      return true;
+    } else if(state.url.includes('admin') && userParsed.role != UserRoles.SystemAdmin) {
+      return this.router.navigateByUrl('/client');
+    } else if(state.url.includes('client') && userParsed.role == UserRoles.SystemAdmin) {
+      return this.router.navigateByUrl('/admin');
+    } else {
       return true;
     }
 
 
-    return state.url.includes('client') ? true : this.router.navigateByUrl('/client');
+
 
   }
 

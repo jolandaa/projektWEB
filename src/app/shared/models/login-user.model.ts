@@ -5,18 +5,19 @@ export interface LoginUserModel {
 
 export interface User {
   email: string;
-  role: string;
+  role: number;
   username: string;
   firstname: string;
   lastname: string;
   status: string;
   token: string;
-  user_id: string;
+  user_id: number;
+  school_id: number;
 }
 
 export const UserRoles = {
-  SystemAdmin: '1',
-  Admin: '2',
-  Teacher: '3',
-  Parent: '4'
+  SystemAdmin: 1,
+  Admin: 2,
+  Teacher: 3,
+  Parent: 4
 }

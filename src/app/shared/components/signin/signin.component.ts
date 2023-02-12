@@ -32,7 +32,7 @@ export class SigninComponent implements OnInit {
           const user: User = response.user;
           localStorage.setItem('user', JSON.stringify(user));
           if (user.role == UserRoles.SystemAdmin) {
-            this.router.navigate(['/']);
+            this.router.navigate(['/admin']);
           } else {
             this.router.navigate(['/client']);
           }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {SigninComponent} from "./shared/components/signin/signin.component";
-import {AuthGuard} from "./auth/guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -13,12 +12,12 @@ const routes: Routes = [
     loadChildren: () => import('./client/client.module').then(m => m.ClientModule),
   },
   {
-    path: "",
+    path: "admin",
     loadChildren: () => import('./management/management.module').then(m => m.ManagementModule),
   },
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'client'
   },
 ];
 

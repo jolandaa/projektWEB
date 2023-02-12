@@ -14,6 +14,15 @@ import { ClassesComponent } from './components/classes/classes.component';
 import { TeachersComponent } from './components/teachers/teachers.component';
 import { StudentsComponent } from './components/students/students.component';
 import { ParentsComponent } from './components/parents/parents.component';
+import {CommonModule} from "@angular/common";
+import {MatTableModule} from "@angular/material/table";
+import { AddClassComponent } from './components/classes/add-class/add-class.component';
+import { EditClassComponent } from './components/classes/edit-class/edit-class.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -24,16 +33,26 @@ import { ParentsComponent } from './components/parents/parents.component';
     ClassesComponent,
     TeachersComponent,
     StudentsComponent,
-    ParentsComponent
+    ParentsComponent,
+    AddClassComponent,
+    EditClassComponent
   ],
   imports: [
+    CommonModule,
     ClientRoutingModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatDialogModule,
     MatSidenavModule,
     CoreModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [
 

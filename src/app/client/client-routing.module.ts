@@ -8,6 +8,8 @@ import {ClassesComponent} from "./components/classes/classes.component";
 import {TeachersComponent} from "./components/teachers/teachers.component";
 import {StudentsComponent} from "./components/students/students.component";
 import {ParentsComponent} from "./components/parents/parents.component";
+import {AddClassComponent} from "./components/classes/add-class/add-class.component";
+import {EditClassComponent} from "./components/classes/edit-class/edit-class.component";
 
 const routes: Routes = [
   {
@@ -24,8 +26,16 @@ const routes: Routes = [
         component: InstituteProfileComponent
       },
       {
-        path: "admin/classes",
+        path: "classes",
         component: ClassesComponent
+      },
+      {
+        path: "add-class",
+        component: AddClassComponent
+      },
+      {
+        path: "edit-class/:id",
+        component: EditClassComponent
       },
       {
         path: "teacher/classes",
@@ -44,12 +54,6 @@ const routes: Routes = [
         component: ParentsComponent
       }
     ]
-  }, {
-    path: "**",
-    redirectTo: "/dashboard",
-  }, {
-    path: "",
-    redirectTo: "/dashboard",
   }
 ];
 

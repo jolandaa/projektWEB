@@ -1,51 +1,51 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {catchError, map, of, tap} from "rxjs";
 import {SchoolListModel} from "../models/school-list.model";
+import {catchError, map, of, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
-export class SchoolsService {
+export class AdminUsersService {
 
   baseUrl = 'http://localhost/WEB/backend/';
 
   constructor(private http: HttpClient) { }
 
-  getSchoolsList() {
-    return this.http.get<SchoolListModel>(this.baseUrl + 'school/list.php').pipe(
+  getAdminUsersList(role_id: any) {
+    return this.http.get<SchoolListModel>(this.baseUrl + 'users/usersByRole.php?role_id=' + role_id).pipe(
       map((data: SchoolListModel) => data),
       tap((data: SchoolListModel) => data),
       catchError((error) => of(error))
     );
   }
 
-  getSchoolById(school_id: any) {
-    return this.http.get<any>(this.baseUrl + 'school/getSchoolById.php?school_id=' + school_id).pipe(
+  deleteUser(user_id: string) {
+    return this.http.post<any>(this.baseUrl + 'users/delete.php', {user_id}).pipe(
       map((data: any) => data),
       tap((data: any) => data),
       catchError((error) => of(error))
     );
   }
 
-  addSchool(body: any) {
-    return this.http.post<any>(this.baseUrl + 'school/add.php', body).pipe(
+  addUser(body: any) {
+    return this.http.post<any>(this.baseUrl + 'users/add.php', body).pipe(
       map((data: any) => data),
       tap((data: any) => data),
       catchError((error) => of(error))
     );
   }
 
-  deleteSchool(school_id: string) {
-    return this.http.post<any>(this.baseUrl + 'school/delete.php', {school_id}).pipe(
+  editUser(body: any) {
+    return this.http.post<any>(this.baseUrl + 'users/edit.php', body).pipe(
       map((data: any) => data),
       tap((data: any) => data),
       catchError((error) => of(error))
     );
   }
 
-  editSchool(body: any) {
-    return this.http.post<any>(this.baseUrl + 'school/edit.php', body).pipe(
+  getUserById(user_id: any) {
+    return this.http.get<any>(this.baseUrl + 'users/getUserById.php?user_id=' + user_id).pipe(
       map((data: any) => data),
       tap((data: any) => data),
       catchError((error) => of(error))

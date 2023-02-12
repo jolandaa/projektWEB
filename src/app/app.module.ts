@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {SigninComponent} from "./shared/components/signin/signin.component";
+import {TOKEN_INTERCEPTOR} from "./auth/interceptors";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import {SigninComponent} from "./shared/components/signin/signin.component";
     BrowserAnimationsModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    TOKEN_INTERCEPTOR
+  ],
   exports: [
   ],
   bootstrap: [AppComponent]

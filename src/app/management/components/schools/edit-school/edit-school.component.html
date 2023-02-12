@@ -1,1 +1,48 @@
-<p>edit-school works!</p>
+<form class="example-form" [formGroup]="editSchoolForm" (ngSubmit)="editSchool()">
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="description">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Country</mat-label>
+      <input matInput formControlName="country">
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <mat-label>City</mat-label>
+      <input matInput formControlName="city">
+    </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Street</mat-label>
+        <input matInput formControlName="street">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>ZipCode</mat-label>
+        <input matInput formControlName="zipCode" type="number">
+      </mat-form-field>
+    </td>
+  </tr></table>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Admin User</mat-label>
+    <mat-select formControlName="admin_id">
+      <mat-option>Clear</mat-option>
+      <mat-option [value]="user?.user_id" *ngFor="let user of adminUsersList">{{user?.username}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button type="submit">Edit</button>
+</form>

@@ -58,16 +58,9 @@ const routes: Routes = [
         path: "profile",
         component: ProfileComponent,
         canActivate: [AuthGuard]
-      },
-      {
-        path: "**",
-        redirectTo: "/dashboard",
-      },
+      }
     ]
-  }, {
-    path: "**",
-    redirectTo: "/dashboard",
-  },
+  }
   ];
 
 @NgModule({
