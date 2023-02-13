@@ -1,1 +1,62 @@
-<p>teachers works!</p>
+<div>
+  <button [routerLink]="['../add-teacher']">Add Teacher</button>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+    <ng-container matColumnDef="teacher_id">
+      <th mat-header-cell *matHeaderCellDef> Teacher Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.teacher_id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="first_name">
+      <th mat-header-cell *matHeaderCellDef> first name </th>
+      <td mat-cell *matCellDef="let element"> {{element.first_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="last_name">
+      <th mat-header-cell *matHeaderCellDef> last name </th>
+      <td mat-cell *matCellDef="let element"> {{element.last_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+    <ng-container matColumnDef="date_of_start">
+      <th mat-header-cell *matHeaderCellDef> date_of_start </th>
+      <td mat-cell *matCellDef="let element"> {{element.date_of_start}} </td>
+    </ng-container>
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef> gender </th>
+      <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+    </ng-container>
+    <ng-container matColumnDef="date_of_birth">
+      <th mat-header-cell *matHeaderCellDef> date_of_birth </th>
+      <td mat-cell *matCellDef="let element"> {{element.date_of_birth}} </td>
+    </ng-container>
+    <ng-container matColumnDef="education">
+      <th mat-header-cell *matHeaderCellDef> education </th>
+      <td mat-cell *matCellDef="let element"> {{element.education}} </td>
+    </ng-container>
+    <ng-container matColumnDef="experience">
+      <th mat-header-cell *matHeaderCellDef> experience </th>
+      <td mat-cell *matCellDef="let element"> {{element.experience}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button class="menu-button" [routerLink]="['../edit-teacher', element.teacher_id]">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-button class="menu-button" (click)="deleteTeacher(element.teacher_id,element.user_id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>

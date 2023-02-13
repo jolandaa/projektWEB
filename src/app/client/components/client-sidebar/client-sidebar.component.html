@@ -16,21 +16,26 @@
     <mat-icon>supervised_user_circle</mat-icon>
     <span>Classes</span>
   </button>
-  <button mat-button class="menu-button" [routerLink]="['admin/teachers']" *ngIf="loggedUser.role == userRoles.Admin">
+  <button mat-button class="menu-button" [routerLink]="['teachers']" *ngIf="loggedUser.role == userRoles.Admin">
     <mat-icon>school</mat-icon>
     <span>Teachers</span>
   </button>
-  <button mat-button class="menu-button" [routerLink]="['admin/students']" *ngIf="loggedUser.role == userRoles.Admin">
+  <button mat-button class="menu-button" [routerLink]="['students']" *ngIf="loggedUser.role == userRoles.Admin">
     <mat-icon>school</mat-icon>
     <span>Students</span>
   </button>
-  <button mat-button class="menu-button" [routerLink]="['admin/parents']" *ngIf="loggedUser.role == userRoles.Admin">
+  <button mat-button class="menu-button" [routerLink]="['parents']" *ngIf="loggedUser.role == userRoles.Admin">
     <mat-icon>school</mat-icon>
     <span>Parents</span>
   </button>
   <mat-divider></mat-divider>
+</div>
 
-
+<div *ngIf="loggedUser?.role == userRoles.Parent">
+  <button mat-button class="menu-button" [routerLink]="['parent/students']">
+    <mat-icon>school</mat-icon>
+    <span>Students</span>
+  </button>
 </div>
 
 <button mat-button class="menu-button" (click)="logOut()">

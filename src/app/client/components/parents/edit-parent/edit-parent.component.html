@@ -1,0 +1,33 @@
+<form class="example-form" [formGroup]="editParentForm" (ngSubmit)="editParent()">
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="firstname">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>lastname</mat-label>
+          <input matInput formControlName="lastname">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>email</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+
+
+  <button type="submit">Edit</button>
+</form>

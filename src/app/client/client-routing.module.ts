@@ -10,6 +10,15 @@ import {StudentsComponent} from "./components/students/students.component";
 import {ParentsComponent} from "./components/parents/parents.component";
 import {AddClassComponent} from "./components/classes/add-class/add-class.component";
 import {EditClassComponent} from "./components/classes/edit-class/edit-class.component";
+import {AddTeacherComponent} from "./components/teachers/add-teacher/add-teacher.component";
+import {EditTeacherComponent} from "./components/teachers/edit-teacher/edit-teacher.component";
+import {ClassStudentsComponent} from "./components/classes/class-students/class-students.component";
+import {AddParentComponent} from "./components/parents/add-parent/add-parent.component";
+import {EditParentComponent} from "./components/parents/edit-parent/edit-parent.component";
+import {AddStudentComponent} from "./components/students/add-student/add-student.component";
+import {EditStudentComponent} from "./components/students/edit-student/edit-student.component";
+import {ViewChildrenComponent} from "./components/parents/view-children/view-children.component";
+import {ParentStudentsComponent} from "./components/parent-students/parent-students.component";
 
 const routes: Routes = [
   {
@@ -38,20 +47,52 @@ const routes: Routes = [
         component: EditClassComponent
       },
       {
-        path: "teacher/classes",
-        component: ClassesComponent
+        path: "class-students/:id",
+        component: ClassStudentsComponent
       },
       {
-        path: "admin/teachers",
+        path: "teachers",
         component: TeachersComponent
       },
       {
-        path: "admin/students",
+        path: "add-teacher",
+        component: AddTeacherComponent
+      },
+      {
+        path: "edit-teacher/:id",
+        component: EditTeacherComponent
+      },
+      {
+        path: "students",
         component: StudentsComponent
       },
       {
-        path: "admin/parents",
+        path: "add-student",
+        component: AddStudentComponent
+      },
+      {
+        path: "edit-student/:id",
+        component: EditStudentComponent
+      },
+      {
+        path: "parents",
         component: ParentsComponent
+      },
+      {
+        path: "add-parent",
+        component: AddParentComponent
+      },
+      {
+        path: "edit-parent/:id",
+        component: EditParentComponent
+      },
+      {
+        path: "view-children/:id",
+        component: ViewChildrenComponent
+      },
+      {
+        path: "parent/students",
+        component: ParentStudentsComponent
       }
     ]
   }

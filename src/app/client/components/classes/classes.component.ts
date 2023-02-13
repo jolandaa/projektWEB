@@ -12,7 +12,7 @@ import {User} from "../../../shared/models/login-user.model";
 })
 export class ClassesComponent implements OnInit {
 
-  displayedColumns: string[] = ['class_id', 'name', 'description', 'year', 'actions'];
+  displayedColumns: string[] = ['class_id', 'name', 'description', 'year', 'teacher', 'students', 'actions'];
   dataSource!: SchoolModel[];
   loggedUser!: User;
 

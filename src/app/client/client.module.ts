@@ -23,6 +23,16 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { AddTeacherComponent } from './components/teachers/add-teacher/add-teacher.component';
+import { EditTeacherComponent } from './components/teachers/edit-teacher/edit-teacher.component';
+import {MatSelectModule} from "@angular/material/select";
+import { ClassStudentsComponent } from './components/classes/class-students/class-students.component';
+import { AddParentComponent } from './components/parents/add-parent/add-parent.component';
+import { EditParentComponent } from './components/parents/edit-parent/edit-parent.component';
+import { AddStudentComponent } from './components/students/add-student/add-student.component';
+import { EditStudentComponent } from './components/students/edit-student/edit-student.component';
+import { ViewChildrenComponent } from './components/parents/view-children/view-children.component';
+import { ParentStudentsComponent } from './components/parent-students/parent-students.component';
 
 @NgModule({
   declarations: [
@@ -35,25 +45,35 @@ import {HttpClientModule} from "@angular/common/http";
     StudentsComponent,
     ParentsComponent,
     AddClassComponent,
-    EditClassComponent
+    EditClassComponent,
+    AddTeacherComponent,
+    EditTeacherComponent,
+    ClassStudentsComponent,
+    AddParentComponent,
+    EditParentComponent,
+    AddStudentComponent,
+    EditStudentComponent,
+    ViewChildrenComponent,
+    ParentStudentsComponent
   ],
-  imports: [
-    CommonModule,
-    ClientRoutingModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
-    MatSidenavModule,
-    CoreModule,
-    MatDividerModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    FormsModule,
-  ],
+    imports: [
+        CommonModule,
+        ClientRoutingModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatDialogModule,
+        MatSidenavModule,
+        CoreModule,
+        MatDividerModule,
+        MatTableModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        FormsModule,
+        MatSelectModule,
+    ],
   providers: [
 
   ]

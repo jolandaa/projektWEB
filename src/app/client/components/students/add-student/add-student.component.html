@@ -1,0 +1,162 @@
+<form class="example-form" [formGroup]="addStudentForm" (ngSubmit)="addStudent()">
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>nr_amzes</mat-label>
+          <input matInput formControlName="nr_amzes">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="firstname">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>lastname</mat-label>
+          <input matInput formControlName="lastname">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>email</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>date_of_join</mat-label>
+          <input matInput formControlName="date_of_join" type="date">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field appearance="fill">
+          <mat-label>Class</mat-label>
+          <mat-select formControlName="class_id">
+            <mat-option>Clear</mat-option>
+            <mat-option [value]="user?.class_id" *ngFor="let user of classesList">{{user?.class_name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>mobile_no</mat-label>
+          <input matInput formControlName="mobile_no" type="number">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>father_name</mat-label>
+          <input matInput formControlName="father_name">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>gender</mat-label>
+          <input matInput formControlName="gender">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Parent</mat-label>
+          <mat-select formControlName="parent_id">
+            <mat-option>Clear</mat-option>
+            <mat-option [value]="user?.parent_id" *ngFor="let user of parentsList">{{user?.username}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>picture</mat-label>
+          <input matInput formControlName="picture">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>date_of_birth</mat-label>
+          <input matInput formControlName="date_of_birth" type="date">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>father_mobile_no</mat-label>
+          <input matInput formControlName="father_mobile_no">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>father_education</mat-label>
+          <input matInput formControlName="father_education">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>father_profession</mat-label>
+          <input matInput formControlName="father_profession">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>mother_first_name</mat-label>
+          <input matInput formControlName="mother_first_name">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>mother_education</mat-label>
+          <input matInput formControlName="mother_education">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>mother_profession</mat-label>
+          <input matInput formControlName="mother_profession">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>mother_mobile_no</mat-label>
+          <input matInput formControlName="mother_mobile_no">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+
+  <button type="submit">Add</button>
+</form>

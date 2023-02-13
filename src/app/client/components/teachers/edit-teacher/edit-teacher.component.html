@@ -1,0 +1,95 @@
+<form class="example-form" [formGroup]="editTeacherForm" (ngSubmit)="editTeacher()">
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="firstname">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>lastname</mat-label>
+          <input matInput formControlName="lastname">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>email</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>date_of_start</mat-label>
+          <input matInput formControlName="date_of_start" type="date">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>monthly_salary</mat-label>
+          <input matInput formControlName="monthly_salary" type="number">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>mobile_no</mat-label>
+          <input matInput formControlName="mobile_no" type="number">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>father_name</mat-label>
+          <input matInput formControlName="father_name">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>gender</mat-label>
+          <input matInput formControlName="gender">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>date_of_birth</mat-label>
+          <input matInput formControlName="date_of_birth" type="date">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>education</mat-label>
+          <input matInput formControlName="education">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>experience</mat-label>
+          <input matInput formControlName="experience">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+
+  <button type="submit">Edit</button>
+</form>

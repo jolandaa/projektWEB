@@ -23,6 +23,14 @@
     </mat-form-field></td>
   </tr></table>
 
+  <mat-form-field appearance="fill">
+    <mat-label>Admin User</mat-label>
+    <mat-select formControlName="teacher_id">
+      <mat-option>Clear</mat-option>
+      <mat-option [value]="user?.teacher_id" *ngFor="let user of teacherList">{{user?.username}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
 
   <button type="submit">Add</button>
 </form>
