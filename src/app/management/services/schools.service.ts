@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {catchError, map, of, tap} from "rxjs";
-import {SchoolListModel} from "../models/school-list.model";
+import {AddSchoolModel, EditSchoolModel, SchoolListModel} from "../models/school-list.model";
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class SchoolsService {
     );
   }
 
-  addSchool(body: any) {
+  addSchool(body: AddSchoolModel) {
     return this.http.post<any>(this.baseUrl + 'school/add.php', body).pipe(
       map((data: any) => data),
       tap((data: any) => data),
@@ -44,7 +44,7 @@ export class SchoolsService {
     );
   }
 
-  editSchool(body: any) {
+  editSchool(body: EditSchoolModel) {
     return this.http.post<any>(this.baseUrl + 'school/edit.php', body).pipe(
       map((data: any) => data),
       tap((data: any) => data),

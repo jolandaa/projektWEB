@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {SchoolModel} from "../../../management/models/school-list.model";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmModalComponent} from "../../../shared/modals/confirm-modal";
 import {ClassesService} from "../../services/classes.service";
 import {User} from "../../../shared/models/login-user.model";
+import {ClassesModel} from "../../models/classes.model";
 
 @Component({
   selector: 'app-classes',
@@ -13,7 +13,7 @@ import {User} from "../../../shared/models/login-user.model";
 export class ClassesComponent implements OnInit {
 
   displayedColumns: string[] = ['class_id', 'name', 'description', 'year', 'teacher', 'students', 'actions'];
-  dataSource!: SchoolModel[];
+  dataSource!: ClassesModel[];
   loggedUser!: User;
 
   constructor(private classesService: ClassesService,

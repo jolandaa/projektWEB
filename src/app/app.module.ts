@@ -8,6 +8,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {SigninComponent} from "./shared/components/signin/signin.component";
 import {TOKEN_INTERCEPTOR} from "./auth/interceptors";
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -21,9 +22,12 @@ import {TOKEN_INTERCEPTOR} from "./auth/interceptors";
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatSnackBarModule
   ],
   providers: [
-    TOKEN_INTERCEPTOR
+    TOKEN_INTERCEPTOR,
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}
+
   ],
   exports: [
   ],

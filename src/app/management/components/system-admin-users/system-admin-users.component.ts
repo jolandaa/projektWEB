@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {SchoolModel} from "../../models/school-list.model";
-import {SchoolsService} from "../../services/schools.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmModalComponent} from "../../../shared/modals/confirm-modal";
 import {AdminUsersService} from "../../services/admin-users.service";
+import {SystemAdminUsersModel} from "../../models/system-admin-users.model";
 
 @Component({
   selector: 'app-system-admin-users',
@@ -13,7 +12,7 @@ import {AdminUsersService} from "../../services/admin-users.service";
 export class SystemAdminUsersComponent implements OnInit {
 
   displayedColumns: string[] = ['user_id', 'username', 'first_name', 'last_name', 'email', 'role', 'status', 'actions'];
-  dataSource!: SchoolModel[];
+  dataSource!: SystemAdminUsersModel[];
 
   constructor(private adminUsersService: AdminUsersService,
               private dialog: MatDialog) { }

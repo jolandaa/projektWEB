@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AdminUsersService} from "../../../services/admin-users.service";
+import {AddSystemAdminUsersModel} from "../../../models/system-admin-users.model";
 
 @Component({
   selector: 'app-add-system-admin-users',
@@ -27,7 +28,7 @@ export class AddSystemAdminUsersComponent implements OnInit {
 
 
   addUser() {
-    const addUserBody = {
+    const addUserBody: AddSystemAdminUsersModel = {
       first_name: this.FirstName.value,
       last_name: this.LastName.value,
       email: this.Email.value,

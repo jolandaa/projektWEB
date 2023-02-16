@@ -13,4 +13,26 @@ export interface SchoolModel {
   country: string;
   city: string;
   zipCode: string;
+  admin_id: number;
+}
+export interface AddSchoolModel {
+  name: string;
+  description: string;
+  country: string;
+  city: string;
+  street: string;
+  zipCode: string;
+  admin_id: string;
+  logo: string;
+}
+export interface EditSchoolModel {
+  school_id: number;
+  name: string;
+  description: string;
+  country: string;
+  city: string;
+  street: string;
+  zipCode: string;
+  admin_id: string;
+  logo: string;
 }

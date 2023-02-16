@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SchoolListModel} from "../models/school-list.model";
-import {catchError, map, of, tap} from "rxjs";
+import {catchError, map, Observable, of, tap} from "rxjs";
+import {
+  AddSystemAdminUsersModel,
+  EditSystemAdminUsersModel,
+  SystemAdminUsersModel, SystemAdminUsersResponseModel
+} from "../models/system-admin-users.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +17,10 @@ export class AdminUsersService {
 
   constructor(private http: HttpClient) { }
 
-  getAdminUsersList(role_id: any) {
-    return this.http.get<SchoolListModel>(this.baseUrl + 'users/usersByRole.php?role_id=' + role_id).pipe(
-      map((data: SchoolListModel) => data),
-      tap((data: SchoolListModel) => data),
+  getAdminUsersList(role_id: number): Observable<SystemAdminUsersResponseModel> {
+    return this.http.get<SystemAdminUsersResponseModel>(this.baseUrl + 'users/usersByRole.php?role_id=' + role_id).pipe(
+      map((data: SystemAdminUsersResponseModel) => data),
+      tap((data: SystemAdminUsersResponseModel) => data),
       catchError((error) => of(error))
     );
   }
@@ -28,7 +33,7 @@ export class AdminUsersService {
     );
   }
 
-  addUser(body: any) {
+  addUser(body: AddSystemAdminUsersModel) {
     return this.http.post<any>(this.baseUrl + 'users/add.php', body).pipe(
       map((data: any) => data),
       tap((data: any) => data),
@@ -36,7 +41,7 @@ export class AdminUsersService {
     );
   }
 
-  editUser(body: any) {
+  editUser(body: EditSystemAdminUsersModel) {
     return this.http.post<any>(this.baseUrl + 'users/edit.php', body).pipe(
       map((data: any) => data),
       tap((data: any) => data),
@@ -44,10 +49,10 @@ export class AdminUsersService {
     );
   }
 
-  getUserById(user_id: any) {
+  getUserById(user_id: string) {
     return this.http.get<any>(this.baseUrl + 'users/getUserById.php?user_id=' + user_id).pipe(
-      map((data: any) => data),
-      tap((data: any) => data),
+      map((data: SystemAdminUsersModel) => data),
+      tap((data: SystemAdminUsersModel) => data),
       catchError((error) => of(error))
     );
   }

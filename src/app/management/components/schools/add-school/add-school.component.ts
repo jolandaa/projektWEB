@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {AdminUsersService} from "../../../services/admin-users.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {SchoolsService} from "../../../services/schools.service";
+import {SystemAdminUsersModel} from "../../../models/system-admin-users.model";
+import {AddSchoolModel} from "../../../models/school-list.model";
 
 @Component({
   selector: 'app-add-school',
@@ -11,7 +13,7 @@ import {SchoolsService} from "../../../services/schools.service";
 export class AddSchoolComponent implements OnInit {
 
 
-  adminUsersList: any[] = [];
+  adminUsersList: SystemAdminUsersModel[] = [];
   addSchoolForm!: FormGroup;
 
   constructor(private adminUsersService: AdminUsersService,
@@ -42,8 +44,7 @@ export class AddSchoolComponent implements OnInit {
   }
 
   addSchool() {
-    console.log(this.addSchoolForm.value)
-    const addSchool = {
+    const addSchool: AddSchoolModel = {
       name: this.Name.value,
       description: this.Description.value,
       country: this.Country.value,

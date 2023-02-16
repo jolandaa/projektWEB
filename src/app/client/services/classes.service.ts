@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {SchoolListModel} from "../../management/models/school-list.model";
-import {catchError, map, of, tap} from "rxjs";
+import {catchError, map, Observable, of, tap} from "rxjs";
+import {ClassesResponseModel} from "../models/classes.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,10 @@ export class ClassesService {
 
   constructor(private http: HttpClient) { }
 
-  getClassesList(school_id: any) {
-    return this.http.get<SchoolListModel>(this.baseUrl + 'classes/list.php?school_id=' + school_id).pipe(
-      map((data: SchoolListModel) => data),
-      tap((data: SchoolListModel) => data),
+  getClassesList(school_id: any): Observable<ClassesResponseModel> {
+    return this.http.get<ClassesResponseModel>(this.baseUrl + 'classes/list.php?school_id=' + school_id).pipe(
+      map((data: ClassesResponseModel) => data),
+      tap((data: ClassesResponseModel) => data),
       catchError((error) => of(error))
     );
   }

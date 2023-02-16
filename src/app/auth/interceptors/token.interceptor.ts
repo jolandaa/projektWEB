@@ -6,17 +6,17 @@ import {
   HttpInterceptor,
   HTTP_INTERCEPTORS, HttpErrorResponse
 } from "@angular/common/http";
-import { Observable, throwError } from "rxjs";
+import {map, Observable, throwError} from "rxjs";
 import { catchError } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { AccountService } from "../services/account.service";
-import { environment } from "src/environments/environment";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router, private accountService: AccountService) {
+  constructor(private router: Router, private accountService: AccountService, private snackBar: MatSnackBar) {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -28,9 +28,15 @@ export class TokenInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request).pipe(
+      map(res => {
+        console.log(res);
+        return res
+      }),
       catchError(error => {
+        console.log(error);
+        this.snackBar.open(error.error.error);
+
         if (error instanceof HttpErrorResponse && error.status === 401) {
-          console.log(error);
           this.accountService.logout();
           this.router.navigateByUrl(`/login`);
         }

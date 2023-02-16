@@ -3,6 +3,8 @@ import {ActivatedRoute} from "@angular/router";
 import {SchoolsService} from "../../../services/schools.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AdminUsersService} from "../../../services/admin-users.service";
+import {SystemAdminUsersModel} from "../../../models/system-admin-users.model";
+import {EditSchoolModel, SchoolModel} from "../../../models/school-list.model";
 
 @Component({
   selector: 'app-edit-school',
@@ -12,9 +14,9 @@ import {AdminUsersService} from "../../../services/admin-users.service";
 export class EditSchoolComponent implements OnInit {
 
   school_id = this.route.snapshot.params['id'];
-  schoolData!: any;
+  schoolData!: SchoolModel;
   editSchoolForm!: FormGroup;
-  adminUsersList: any[] = [];
+  adminUsersList: SystemAdminUsersModel[] = [];
 
   constructor(private route: ActivatedRoute,
               private fb: FormBuilder,
@@ -38,13 +40,12 @@ export class EditSchoolComponent implements OnInit {
 
   getSchool() {
     this.schoolService.getSchoolById(this.school_id).subscribe(res => {
-      console.log(res)
       this.schoolData = res.data;
       this.fillSchoolForm(this.schoolData);
     })
   }
 
-  fillSchoolForm(data: any) {
+  fillSchoolForm(data: SchoolModel) {
     this.Name.setValue(data.name);
     this.Description.setValue(data.description);
     this.Country.setValue(data.country);
@@ -63,8 +64,7 @@ export class EditSchoolComponent implements OnInit {
   }
 
   editSchool() {
-    console.log(this.editSchoolForm.value)
-    const addSchool = {
+    const editSchool: EditSchoolModel = {
       school_id: this.school_id,
       name: this.Name.value,
       description: this.Description.value,
@@ -76,7 +76,7 @@ export class EditSchoolComponent implements OnInit {
       logo: 'logo'
     };
 
-    this.schoolService.editSchool(addSchool).subscribe(res => {
+    this.schoolService.editSchool(editSchool).subscribe(res => {
       console.log(res);
     })
   }

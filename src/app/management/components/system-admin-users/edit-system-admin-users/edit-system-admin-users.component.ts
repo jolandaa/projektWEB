@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {SchoolsService} from "../../../services/schools.service";
 import {AdminUsersService} from "../../../services/admin-users.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {EditSystemAdminUsersModel, SystemAdminUsersModel} from "../../../models/system-admin-users.model";
 
 @Component({
   selector: 'app-edit-system-admin-users',
@@ -13,7 +13,7 @@ export class EditSystemAdminUsersComponent implements OnInit {
 
 
   user_id = this.route.snapshot.params['id'];
-  userData!: any;
+  userData!: SystemAdminUsersModel;
   editUserForm!: FormGroup;
 
   constructor(private route: ActivatedRoute,
@@ -37,7 +37,7 @@ export class EditSystemAdminUsersComponent implements OnInit {
     })
   }
 
-  fillUserForm(data: any) {
+  fillUserForm(data: SystemAdminUsersModel) {
     this.FirstName.setValue(data.first_name);
     this.LastName.setValue(data.last_name);
     this.Email.setValue(data.email);
@@ -45,7 +45,7 @@ export class EditSystemAdminUsersComponent implements OnInit {
   }
 
   editUser() {
-    const editUserBody = {
+    const editUserBody: EditSystemAdminUsersModel = {
       user_id: this.user_id,
       first_name: this.FirstName.value,
       last_name: this.LastName.value,

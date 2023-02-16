@@ -12,7 +12,9 @@ export interface User {
   status: string;
   token: string;
   user_id: number;
-  school_id: number;
+  school_id?: number;
+  teacher_profile?: TeacherProfile,
+  parent_profile?: ParentProfile
 }
 
 export const UserRoles = {
@@ -20,4 +22,13 @@ export const UserRoles = {
   Admin: 2,
   Teacher: 3,
   Parent: 4
+}
+
+
+export interface TeacherProfile {
+
+}
+
+export interface ParentProfile {
+
 }

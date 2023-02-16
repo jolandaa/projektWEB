@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../../../shared/models/login-user.model";
 import {ClassesService} from "../../../services/classes.service";
 import {ActivatedRoute} from "@angular/router";
+import {ClassesModel} from "../../../models/classes.model";
 
 @Component({
   selector: 'app-edit-class',
@@ -14,7 +15,7 @@ export class EditClassComponent implements OnInit {
   editClassForm!: FormGroup;
   loggedUser!: User;
   class_id = this.route.snapshot.params['id'];
-  classData!: any;
+  classData!: ClassesModel;
 
   constructor(private classesService: ClassesService,
               private route: ActivatedRoute,
@@ -32,7 +33,6 @@ export class EditClassComponent implements OnInit {
 
   getClass() {
     this.classesService.getCLassById(this.class_id).subscribe(res => {
-      console.log(res)
       this.classData = res.data;
       this.fillClassForm(this.classData);
     })
