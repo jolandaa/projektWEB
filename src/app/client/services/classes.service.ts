@@ -28,6 +28,14 @@ export class ClassesService {
     );
   }
 
+  getCLassByTeacherId(teacher_id: any) {
+    return this.http.get<any>(this.baseUrl + 'classes/getClassByTeacherId.php?teacher_id=' + teacher_id).pipe(
+      map((data: any) => data),
+      tap((data: any) => data),
+      catchError((error) => of(error))
+    );
+  }
+
   addClass(body: any) {
     return this.http.post<any>(this.baseUrl + 'classes/add.php', body).pipe(
       map((data: any) => data),

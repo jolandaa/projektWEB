@@ -1,33 +1,18 @@
-<form class="example-form" [formGroup]="addParentForm" (ngSubmit)="addParent()">
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Name</mat-label>
-          <input matInput formControlName="firstname">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>lastname</mat-label>
-          <input matInput formControlName="lastname">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+<form class="row g-3" [formGroup]="addParentForm" (ngSubmit)="addParent()">
+  <div class="col-12">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" formControlName="firstname">
+  </div>
+  <div class="col-12-4">
+    <label for="lastname" class="form-label">Lastname</label>
+    <textarea class="form-control" id="lastname" formControlName="lastname"></textarea>
+  </div>
 
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>email</mat-label>
-          <input matInput formControlName="email">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-
-
-
-  <button type="submit">Add</button>
+  <div class="col-12">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" formControlName="email">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Add</button>
+  </div>
 </form>

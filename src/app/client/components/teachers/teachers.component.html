@@ -1,6 +1,7 @@
 <div>
-  <button [routerLink]="['../add-teacher']">Add Teacher</button>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <button type="button" class="btn btn-outline-primary mb-3" [routerLink]="['../add-teacher']">Add Teacher</button>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 m-0">
 
 
     <ng-container matColumnDef="teacher_id">
@@ -9,38 +10,42 @@
     </ng-container>
 
     <ng-container matColumnDef="first_name">
-      <th mat-header-cell *matHeaderCellDef> first name </th>
+      <th mat-header-cell *matHeaderCellDef> First name </th>
       <td mat-cell *matCellDef="let element"> {{element.first_name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="last_name">
-      <th mat-header-cell *matHeaderCellDef> last name </th>
+      <th mat-header-cell *matHeaderCellDef> Last name </th>
       <td mat-cell *matCellDef="let element"> {{element.last_name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef> email </th>
+      <th mat-header-cell *matHeaderCellDef> Email </th>
       <td mat-cell *matCellDef="let element"> {{element.email}} </td>
     </ng-container>
     <ng-container matColumnDef="date_of_start">
-      <th mat-header-cell *matHeaderCellDef> date_of_start </th>
+      <th mat-header-cell *matHeaderCellDef> Date of Start </th>
       <td mat-cell *matCellDef="let element"> {{element.date_of_start}} </td>
     </ng-container>
     <ng-container matColumnDef="gender">
-      <th mat-header-cell *matHeaderCellDef> gender </th>
+      <th mat-header-cell *matHeaderCellDef> Gender </th>
       <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
     </ng-container>
     <ng-container matColumnDef="date_of_birth">
-      <th mat-header-cell *matHeaderCellDef> date_of_birth </th>
+      <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
       <td mat-cell *matCellDef="let element"> {{element.date_of_birth}} </td>
     </ng-container>
     <ng-container matColumnDef="education">
-      <th mat-header-cell *matHeaderCellDef> education </th>
+      <th mat-header-cell *matHeaderCellDef> Education </th>
       <td mat-cell *matCellDef="let element"> {{element.education}} </td>
     </ng-container>
     <ng-container matColumnDef="experience">
-      <th mat-header-cell *matHeaderCellDef> experience </th>
+      <th mat-header-cell *matHeaderCellDef> Experience </th>
       <td mat-cell *matCellDef="let element"> {{element.experience}} </td>
+    </ng-container>
+    <ng-container matColumnDef="classes">
+      <th mat-header-cell *matHeaderCellDef> Classes </th>
+      <td mat-cell *matCellDef="let element"><a [routerLink]="['../teacher-classes', element.teacher_id]"> View Classes</a></td>
     </ng-container>
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>

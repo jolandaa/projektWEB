@@ -1,7 +1,7 @@
 <div>
-  <button [routerLink]="['../add-parent']">Add Parent</button>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <button type="button" class="btn btn-outline-primary mb-3" [routerLink]="['../add-parent']">Add Parent</button>
 
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 m-0">
 
     <ng-container matColumnDef="parent_id">
       <th mat-header-cell *matHeaderCellDef> Parent Id </th>

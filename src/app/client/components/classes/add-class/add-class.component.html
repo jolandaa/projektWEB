@@ -1,36 +1,25 @@
-<form class="example-form" [formGroup]="addClassForm" (ngSubmit)="addClass()">
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Name</mat-label>
-          <input matInput formControlName="name">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Description</mat-label>
-          <input matInput formControlName="description">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+<form class="row g-3" [formGroup]="addClassForm" (ngSubmit)="addClass()">
+  <div class="col-md-6">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" formControlName="name">
+  </div>
+  <div class="col-md-6">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" id="description" formControlName="description"></textarea>
+  </div>
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width">
-      <mat-label>Country</mat-label>
-      <input matInput formControlName="year">
-    </mat-form-field></td>
-  </tr></table>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Admin User</mat-label>
-    <mat-select formControlName="teacher_id">
-      <mat-option>Clear</mat-option>
-      <mat-option [value]="user?.teacher_id" *ngFor="let user of teacherList">{{user?.username}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-
-  <button type="submit">Add</button>
+  <div class="col-md-2">
+    <label for="year" class="form-label">Year</label>
+    <input type="text" class="form-control" id="year" formControlName="year">
+  </div>
+  <div class="col-md-4">
+    <label for="adminUser" class="form-label">Teacher</label>
+    <select id="adminUser" class="form-select" formControlName="teacher_id">
+      <option selected>Choose...</option>
+      <option [value]="teacher?.teacher_id" *ngFor="let teacher of teacherList">{{teacher?.username}}</option>
+    </select>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Add</button>
+  </div>
 </form>

@@ -10,13 +10,13 @@ import {map, Observable, throwError} from "rxjs";
 import { catchError } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { AccountService } from "../services/account.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {AppEvents} from "../../app-events.service";
 
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router, private accountService: AccountService, private snackBar: MatSnackBar) {
+  constructor(private router: Router, private accountService: AccountService, private appEvents: AppEvents) {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -29,12 +29,11 @@ export class TokenInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       map(res => {
-        console.log(res);
         return res
       }),
       catchError(error => {
-        console.log(error);
-        this.snackBar.open(error.error.error);
+        console.log(error)
+        this.appEvents.showFailureToast(error.error.error);
 
         if (error instanceof HttpErrorResponse && error.status === 401) {
           this.accountService.logout();

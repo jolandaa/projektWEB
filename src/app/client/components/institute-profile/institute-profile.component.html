@@ -1,1 +1,35 @@
-<p>institute-profile works!</p>
+<form class="row g-3" [formGroup]="editSchoolForm" (ngSubmit)="editSchool()">
+  <div class="col-md-6">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" formControlName="name">
+  </div>
+  <div class="col-md-6">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" id="description" formControlName="description"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="schoolLogo" class="form-label">School Logo</label>
+    <input class="form-control form-control-sm" id="schoolLogo" type="file" formControlName="logo" accept="image/*"
+           (change)="handleInputChange($event)">
+  </div>
+  <div class="col-12">
+    <label for="country" class="form-label">Country</label>
+    <input type="text" class="form-control" id="country" formControlName="country">
+  </div>
+  <div class="col-12">
+    <label for="city" class="form-label">City</label>
+    <input type="text" class="form-control" id="city" formControlName="city">
+  </div>
+  <div class="col-md-6">
+    <label for="street" class="form-label">Street</label>
+    <input type="text" class="form-control" id="street" formControlName="street">
+  </div>
+
+  <div class="col-md-2">
+    <label for="zipCode" class="form-label">ZipCode</label>
+    <input type="text" class="form-control" id="zipCode" formControlName="zipCode">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Edit</button>
+  </div>
+</form>

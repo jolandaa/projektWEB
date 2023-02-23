@@ -4,6 +4,8 @@ import {User} from "../../../../shared/models/login-user.model";
 import {ClassesService} from "../../../services/classes.service";
 import {ActivatedRoute} from "@angular/router";
 import {ClassesModel} from "../../../models/classes.model";
+import {AppEvents} from "../../../../app-events.service";
+import {ApiResponseModel} from "../../../../shared/models/api-response.model";
 
 @Component({
   selector: 'app-edit-class',
@@ -19,7 +21,8 @@ export class EditClassComponent implements OnInit {
 
   constructor(private classesService: ClassesService,
               private route: ActivatedRoute,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private appEvents: AppEvents) { }
 
   ngOnInit(): void {
     this.loggedUser = JSON.parse(<string>localStorage.getItem('user'));
@@ -45,6 +48,10 @@ export class EditClassComponent implements OnInit {
   }
 
   editClass() {
+    if (this.editClassForm.invalid) {
+      this.appEvents.showFailureToast("You have to complete all required fields!");
+      return;
+    }
     const editClass = {
       class_id: this.class_id,
       name: this.Name.value,
@@ -52,8 +59,10 @@ export class EditClassComponent implements OnInit {
       year: this.Year.value
     };
 
-    this.classesService.editClass(editClass).subscribe(res => {
-      console.log(res);
+    this.classesService.editClass(editClass).subscribe((res: ApiResponseModel) => {
+      if (res.success) {
+        this.appEvents.showSuccessToast(res.message || "You have successfully edited this class.");
+      }
     })
   }
 

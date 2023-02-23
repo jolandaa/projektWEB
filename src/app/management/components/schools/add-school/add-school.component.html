@@ -1,48 +1,42 @@
-<form class="example-form" [formGroup]="addSchoolForm" (ngSubmit)="addSchool()">
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Name</mat-label>
-          <input matInput formControlName="name">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Description</mat-label>
-          <input matInput formControlName="description">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+<form class="row g-3" [formGroup]="addSchoolForm" (ngSubmit)="addSchool()">
+  <div class="col-md-6">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" formControlName="name">
+  </div>
+  <div class="col-md-6">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" id="description" formControlName="description"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="schoolLogo" class="form-label">School Logo</label>
+    <input class="form-control form-control-sm" id="schoolLogo" type="file" formControlName="logo" accept="image/*"
+           (change)="handleInputChange($event)">
+  </div>
+  <div class="col-12">
+    <label for="country" class="form-label">Country</label>
+    <input type="text" class="form-control" id="country" formControlName="country">
+  </div>
+  <div class="col-12">
+    <label for="city" class="form-label">City</label>
+    <input type="text" class="form-control" id="city" formControlName="city">
+  </div>
+  <div class="col-md-6">
+    <label for="street" class="form-label">Street</label>
+    <input type="text" class="form-control" id="street" formControlName="street">
+  </div>
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width">
-      <mat-label>Country</mat-label>
-      <input matInput formControlName="country">
-    </mat-form-field></td>
-    <td><mat-form-field class="example-full-width">
-      <mat-label>City</mat-label>
-      <input matInput formControlName="city">
-    </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Street</mat-label>
-        <input matInput formControlName="street">
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>ZipCode</mat-label>
-        <input matInput formControlName="zipCode" type="number">
-      </mat-form-field>
-    </td>
-  </tr></table>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Admin User</mat-label>
-      <mat-select formControlName="admin_id">
-        <mat-option>Clear</mat-option>
-        <mat-option [value]="user?.user_id" *ngFor="let user of adminUsersList">{{user?.username}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-  <button type="submit">Add</button>
+  <div class="col-md-2">
+    <label for="zipCode" class="form-label">ZipCode</label>
+    <input type="text" class="form-control" id="zipCode" formControlName="zipCode">
+  </div>
+  <div class="col-md-4">
+    <label for="adminUser" class="form-label">Admin User</label>
+    <select id="adminUser" class="form-select" formControlName="admin_id">
+      <option selected>Choose...</option>
+      <option [value]="user?.user_id" *ngFor="let user of adminUsersList">{{user?.username}}</option>
+    </select>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Add</button>
+  </div>
 </form>

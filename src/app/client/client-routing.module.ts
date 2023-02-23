@@ -19,6 +19,7 @@ import {AddStudentComponent} from "./components/students/add-student/add-student
 import {EditStudentComponent} from "./components/students/edit-student/edit-student.component";
 import {ViewChildrenComponent} from "./components/parents/view-children/view-children.component";
 import {ParentStudentsComponent} from "./components/parent-students/parent-students.component";
+import {TeacherClassesComponent} from "./components/teachers/teacher-classes/teacher-classes.component";
 
 const routes: Routes = [
   {
@@ -61,6 +62,10 @@ const routes: Routes = [
       {
         path: "edit-teacher/:id",
         component: EditTeacherComponent
+      },
+      {
+        path: "teacher-classes/:id",
+        component: TeacherClassesComponent
       },
       {
         path: "students",

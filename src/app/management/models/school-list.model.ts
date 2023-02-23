@@ -26,7 +26,7 @@ export interface AddSchoolModel {
   logo: string;
 }
 export interface EditSchoolModel {
-  school_id: number;
+  school_id?: number;
   name: string;
   description: string;
   country: string;

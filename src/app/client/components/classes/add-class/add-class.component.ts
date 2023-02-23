@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ClassesService} from "../../../services/classes.service";
 import {User} from "../../../../shared/models/login-user.model";
 import {TeachersService} from "../../../services/teachers.service";
+import {AppEvents} from "../../../../app-events.service";
+import {ApiResponseModel} from "../../../../shared/models/api-response.model";
 
 @Component({
   selector: 'app-add-class',
@@ -18,7 +20,8 @@ export class AddClassComponent implements OnInit {
 
   constructor(private classesService: ClassesService,
               private fb: FormBuilder,
-              private teacherService: TeachersService) { }
+              private teacherService: TeachersService,
+              private appEvents: AppEvents) { }
 
   ngOnInit(): void {
     this.loggedUser = JSON.parse(<string>localStorage.getItem('user'));
@@ -41,16 +44,22 @@ export class AddClassComponent implements OnInit {
 
 
   addClass() {
+    if (this.addClassForm.invalid) {
+      this.appEvents.showFailureToast("You have to complete all required fields!");
+      return;
+    }
     const addClass = {
       school_id: this.loggedUser.school_id,
       name: this.Name.value,
       description: this.Description.value,
       year: this.Year.value,
-      teacher_id: this.teacher_id.value,
+      teacher_id: this.Teacher_id.value,
     };
 
-    this.classesService.addClass(addClass).subscribe(res => {
-      console.log(res);
+    this.classesService.addClass(addClass).subscribe((res: ApiResponseModel) => {
+      if (res.success) {
+        this.appEvents.showSuccessToast(res.message || "You have successfully added this class.");
+      }
     })
   }
 
@@ -63,7 +72,7 @@ export class AddClassComponent implements OnInit {
   get Year() {
     return this.addClassForm.get('year') as FormControl;
   }
-  get teacher_id() {
+  get Teacher_id() {
     return this.addClassForm.get('teacher_id') as FormControl;
   }
 }

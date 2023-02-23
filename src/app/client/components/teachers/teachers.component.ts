@@ -4,6 +4,8 @@ import {User} from "../../../shared/models/login-user.model";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmModalComponent} from "../../../shared/modals/confirm-modal";
 import {TeachersService} from "../../services/teachers.service";
+import {ApiResponseModel} from "../../../shared/models/api-response.model";
+import {AppEvents} from "../../../app-events.service";
 
 @Component({
   selector: 'app-teachers',
@@ -12,12 +14,13 @@ import {TeachersService} from "../../services/teachers.service";
 })
 export class TeachersComponent implements OnInit {
 
-  displayedColumns: string[] = ['teacher_id', 'first_name', 'last_name', 'email', 'date_of_start', 'gender', 'date_of_birth', 'education', 'experience','actions'];
+  displayedColumns: string[] = ['teacher_id', 'first_name', 'last_name', 'email', 'date_of_start', 'gender', 'date_of_birth', 'education', 'experience', 'classes','actions'];
   dataSource!: SchoolModel[];
   loggedUser!: User;
 
   constructor(private teacherService: TeachersService,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private appEvents: AppEvents) { }
 
   ngOnInit(): void {
     this.loggedUser = JSON.parse(<string>localStorage.getItem('user'));
@@ -35,7 +38,9 @@ export class TeachersComponent implements OnInit {
   deleteTeacher(teacher_id: string,user_id: string) {
     let dialogRef = this.dialog.open(ConfirmModalComponent, {
       data: {
-        cancelText: 'I18N.DISCARD'
+        cancelText: 'Discard',
+        title: "Delete Teacher",
+        message: "Are you sure deleting this teacher?"
       },
       autoFocus: false,
       panelClass: 'app-modal'
@@ -44,11 +49,10 @@ export class TeachersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(res => {
       console.log(res);
       if (res === 'submit') {
-        this.teacherService.deleteTeacher(teacher_id, user_id).subscribe(res => {
+        this.teacherService.deleteTeacher(teacher_id, user_id).subscribe((res: ApiResponseModel) => {
           if (res.success === 1) {
             this.getTeacherList();
-          } else {
-
+            this.appEvents.showSuccessToast(res.message || 'You have successfully deleted this user.')
           }
         })
       }

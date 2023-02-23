@@ -33,6 +33,7 @@ import { AddStudentComponent } from './components/students/add-student/add-stude
 import { EditStudentComponent } from './components/students/edit-student/edit-student.component';
 import { ViewChildrenComponent } from './components/parents/view-children/view-children.component';
 import { ParentStudentsComponent } from './components/parent-students/parent-students.component';
+import { TeacherClassesComponent } from './components/teachers/teacher-classes/teacher-classes.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ParentStudentsComponent } from './components/parent-students/parent-stu
     AddStudentComponent,
     EditStudentComponent,
     ViewChildrenComponent,
-    ParentStudentsComponent
+    ParentStudentsComponent,
+    TeacherClassesComponent
   ],
     imports: [
         CommonModule,

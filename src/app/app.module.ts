@@ -9,6 +9,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {SigninComponent} from "./shared/components/signin/signin.component";
 import {TOKEN_INTERCEPTOR} from "./auth/interceptors";
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
+import {AppNotificationModule} from "./shared/components/app-notification/app-notification.module";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/materia
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    AppNotificationModule,
+
   ],
   providers: [
     TOKEN_INTERCEPTOR,

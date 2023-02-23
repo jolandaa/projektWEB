@@ -1,95 +1,67 @@
-<form class="example-form" [formGroup]="addTeacherForm" (ngSubmit)="addTeacher()">
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Name</mat-label>
-          <input matInput formControlName="firstname">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>lastname</mat-label>
-          <input matInput formControlName="lastname">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>email</mat-label>
-          <input matInput formControlName="email">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>date_of_start</mat-label>
-          <input matInput formControlName="date_of_start" type="date">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>monthly_salary</mat-label>
-          <input matInput formControlName="monthly_salary" type="number">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>mobile_no</mat-label>
-          <input matInput formControlName="mobile_no" type="number">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>father_name</mat-label>
-          <input matInput formControlName="father_name">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>gender</mat-label>
-          <input matInput formControlName="gender">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>date_of_birth</mat-label>
-          <input matInput formControlName="date_of_birth" type="date">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>education</mat-label>
-          <input matInput formControlName="education">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>experience</mat-label>
-          <input matInput formControlName="experience">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
 
 
-  <button type="submit">Add</button>
+
+<form class="row g-3" [formGroup]="addTeacherForm" (ngSubmit)="addTeacher()">
+  <div class="col-md-6">
+    <label for="firstname" class="form-label">Name</label>
+    <input type="text" class="form-control" id="firstname" formControlName="firstname">
+  </div>
+  <div class="col-md-6">
+    <label for="lastname" class="form-label">Lastname</label>
+    <input type="text" class="form-control" id="lastname" formControlName="lastname">
+  </div>
+  <div class="col-md-6">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" formControlName="email">
+  </div>
+  <div class="col-md-6">
+    <label for="mobile_no" class="form-label">Mobile No.</label>
+    <input type="number" class="form-control" id="mobile_no" formControlName="mobile_no">
+  </div>
+  <div class="col-md-6">
+    <label for="father_name" class="form-label">Father Name</label>
+    <input type="text" class="form-control" id="father_name" formControlName="father_name">
+  </div>
+  <div class="col-md-2">
+    <label class="form-label">Gender</label>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" id="female" value="F" formControlName="gender">
+      <label class="form-check-label" for="female">
+        Female
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" id="male" value="M" formControlName="gender">
+      <label class="form-check-label" for="male">
+        Male
+      </label>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <label for="date_of_birth" class="form-label">Date of birth</label>
+    <input type="date" class="form-control" id="date_of_birth" formControlName="date_of_birth">
+  </div>
+
+  <div class="col-md-6">
+    <label for="education" class="form-label">Education</label>
+    <input type="text" class="form-control" id="education" formControlName="education">
+  </div>
+  <div class="col-md-6">
+    <label for="experience" class="form-label">Experience</label>
+    <input type="text" class="form-control" id="experience" formControlName="experience">
+  </div>
+
+  <div class="col-md-2">
+    <label for="date_of_birth" class="form-label">Date of start</label>
+    <input type="date" class="form-control" id="date_of_start" formControlName="date_of_start">
+  </div>
+
+  <div class="col-md-6">
+    <label for="monthly_salary" class="form-label">Monthly Salary</label>
+    <input type="number" class="form-control" id="monthly_salary" formControlName="monthly_salary">
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Add</button>
+  </div>
 </form>

@@ -7,6 +7,7 @@ import {
   EditSystemAdminUsersModel,
   SystemAdminUsersModel, SystemAdminUsersResponseModel
 } from "../models/system-admin-users.model";
+import {ApiResponseModel} from "../../shared/models/api-response.model";
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +34,8 @@ export class AdminUsersService {
     );
   }
 
-  addUser(body: AddSystemAdminUsersModel) {
-    return this.http.post<any>(this.baseUrl + 'users/add.php', body).pipe(
+  addUser(body: AddSystemAdminUsersModel): Observable<ApiResponseModel> {
+    return this.http.post<ApiResponseModel>(this.baseUrl + 'users/add.php', body).pipe(
       map((data: any) => data),
       tap((data: any) => data),
       catchError((error) => of(error))

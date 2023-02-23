@@ -1,0 +1,53 @@
+.app-toast {
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: 0px 35px 70px -10px rgba(126, 131, 161, 0.18);
+    color: var(--app-red-color);
+    padding: 16px 24px;
+    color: var(--light-color);
+
+    .mat-body {
+        margin-bottom: 0;
+        flex: 1;
+    }
+
+    .logo {
+        font-size: 32px;
+        height: 32px;
+        width: 32px;
+        margin-right: 16px;
+    }
+
+    .close {
+        margin-left: 35px;
+        height: 24px;
+        width: 24px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+}
+
+.app-toast[dir="rtl"] {
+    .logo {
+        margin-right: unset;
+        margin-left: 16px;
+    }
+
+    .close {
+        margin-right: 35px;
+        margin-left: unset;
+    }
+}
+
+.success {
+    background-color: var(--accent-color);
+}
+
+.callcenter {
+    background-color: var(--client-primary-color);
+}
+
+.error {
+    background-color: var(--red-color);
+}

@@ -3,6 +3,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {ConfirmModalComponent} from "../../../shared/modals/confirm-modal";
 import {AdminUsersService} from "../../services/admin-users.service";
 import {SystemAdminUsersModel} from "../../models/system-admin-users.model";
+import {AppEvents} from "../../../app-events.service";
+import {ApiResponseModel} from "../../../shared/models/api-response.model";
 
 @Component({
   selector: 'app-system-admin-users',
@@ -15,7 +17,8 @@ export class SystemAdminUsersComponent implements OnInit {
   dataSource!: SystemAdminUsersModel[];
 
   constructor(private adminUsersService: AdminUsersService,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private appEvents: AppEvents) { }
 
   ngOnInit(): void {
     this.getUsersList();
@@ -32,20 +35,20 @@ export class SystemAdminUsersComponent implements OnInit {
   deleteUser(user_id: string) {
     let dialogRef = this.dialog.open(ConfirmModalComponent, {
       data: {
-        cancelText: 'I18N.DISCARD'
+        cancelText: 'Discard',
+        title: "Delete user",
+        message: "Are you sure deleting this user?"
       },
       autoFocus: false,
       panelClass: 'app-modal'
     });
 
     dialogRef.afterClosed().subscribe(res => {
-      console.log(res);
       if (res === 'submit') {
-        this.adminUsersService.deleteUser(user_id).subscribe(res => {
+        this.adminUsersService.deleteUser(user_id).subscribe((res: ApiResponseModel) => {
           if (res.success === 1) {
             this.getUsersList();
-          } else {
-
+            this.appEvents.showSuccessToast(res.message || 'You have successfully deleted this user.')
           }
         })
       }

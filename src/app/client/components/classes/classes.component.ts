@@ -35,7 +35,9 @@ export class ClassesComponent implements OnInit {
   deleteClass(class_id: string) {
     let dialogRef = this.dialog.open(ConfirmModalComponent, {
       data: {
-        cancelText: 'I18N.DISCARD'
+        cancelText: 'Discard',
+        title: "Delete Class",
+        message: "Are you sure deleting this class?"
       },
       autoFocus: false,
       panelClass: 'app-modal'

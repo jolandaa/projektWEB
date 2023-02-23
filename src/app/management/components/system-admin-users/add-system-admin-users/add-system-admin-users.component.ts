@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AdminUsersService} from "../../../services/admin-users.service";
 import {AddSystemAdminUsersModel} from "../../../models/system-admin-users.model";
+import {AppEvents} from "../../../../app-events.service";
+import {ApiResponseModel} from "../../../../shared/models/api-response.model";
 
 @Component({
   selector: 'app-add-system-admin-users',
@@ -14,7 +16,8 @@ export class AddSystemAdminUsersComponent implements OnInit {
   addUserForm!: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private userService: AdminUsersService) {
+              private userService: AdminUsersService,
+              private appEvents: AppEvents) {
   }
 
   ngOnInit(): void {
@@ -28,6 +31,10 @@ export class AddSystemAdminUsersComponent implements OnInit {
 
 
   addUser() {
+    if (this.addUserForm.invalid) {
+      this.appEvents.showFailureToast("You have to complete all required fields!");
+      return;
+    }
     const addUserBody: AddSystemAdminUsersModel = {
       first_name: this.FirstName.value,
       last_name: this.LastName.value,
@@ -37,8 +44,10 @@ export class AddSystemAdminUsersComponent implements OnInit {
       username: this.FirstName.value + '.' + this.LastName.value
     }
 
-    this.userService.addUser(addUserBody).subscribe(res => {
-      console.log(res);
+    this.userService.addUser(addUserBody).subscribe((res: ApiResponseModel) => {
+      if (res.success) {
+        this.appEvents.showSuccessToast(res.message || "You have successfully added this user.");
+      }
     })
   }
 

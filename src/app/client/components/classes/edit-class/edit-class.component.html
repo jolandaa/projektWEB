@@ -1,28 +1,18 @@
-<form class="example-form" [formGroup]="editClassForm" (ngSubmit)="editClass()">
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Name</mat-label>
-          <input matInput formControlName="name">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Description</mat-label>
-          <input matInput formControlName="description">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+<form class="row g-3" [formGroup]="editClassForm" (ngSubmit)="editClass()">
+  <div class="col-md-6">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" formControlName="name">
+  </div>
+  <div class="col-md-6">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" id="description" formControlName="description"></textarea>
+  </div>
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width">
-      <mat-label>Country</mat-label>
-      <input matInput formControlName="year">
-    </mat-form-field></td>
-  </tr></table>
-
-
-  <button type="submit">Edit</button>
+  <div class="col-md-2">
+    <label for="year" class="form-label">Year</label>
+    <input type="text" class="form-control" id="year" formControlName="year">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Add</button>
+  </div>
 </form>

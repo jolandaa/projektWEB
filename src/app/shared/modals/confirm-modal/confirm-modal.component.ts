@@ -8,10 +8,10 @@ interface Confirmation {
   cancelText?: string;
 }
 
-const DEFAULT_TITLE = 'I18N.UNSAVED CHANGES';
-const DEFAULT_MESSAGE = 'I18N.YOUR UNSAVED CHANGES WILL BE LOST.SAVE THE CHANGES BEFORE CLOSING?'
-const DEFAULT_CANCEL_LABEL = 'I18N.CANCEL';
-const DEFAULT_CONFIRM_LABEL = 'I18N.CONFIRM';
+const DEFAULT_TITLE = 'Unsaved changes';
+const DEFAULT_MESSAGE = 'Your unsaved changes will be lost.Save the changes before closing?'
+const DEFAULT_CANCEL_LABEL = 'Cancel';
+const DEFAULT_CONFIRM_LABEL = 'Confirm';
 
 @Component({
   selector: 'app-confirm-modal',
@@ -30,10 +30,10 @@ export class ConfirmModalComponent implements OnInit {
 
   ngOnInit() {
     if(this.data) {
-      const { 
-        title = DEFAULT_TITLE, 
-        message = DEFAULT_MESSAGE, 
-        cancelText = DEFAULT_CANCEL_LABEL, 
+      const {
+        title = DEFAULT_TITLE,
+        message = DEFAULT_MESSAGE,
+        cancelText = DEFAULT_CANCEL_LABEL,
         confirmText = DEFAULT_CONFIRM_LABEL } = this.data;
 
       this.title = title;

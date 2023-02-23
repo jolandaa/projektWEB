@@ -3,6 +3,8 @@ import {ActivatedRoute} from "@angular/router";
 import {AdminUsersService} from "../../../services/admin-users.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {EditSystemAdminUsersModel, SystemAdminUsersModel} from "../../../models/system-admin-users.model";
+import {AppEvents} from "../../../../app-events.service";
+import {ApiResponseModel} from "../../../../shared/models/api-response.model";
 
 @Component({
   selector: 'app-edit-system-admin-users',
@@ -18,7 +20,8 @@ export class EditSystemAdminUsersComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private userService: AdminUsersService,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private appEvents: AppEvents) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -45,6 +48,10 @@ export class EditSystemAdminUsersComponent implements OnInit {
   }
 
   editUser() {
+    if (this.editUserForm.invalid) {
+      this.appEvents.showFailureToast("You have to complete all required fields!");
+      return;
+    }
     const editUserBody: EditSystemAdminUsersModel = {
       user_id: this.user_id,
       first_name: this.FirstName.value,
@@ -52,8 +59,10 @@ export class EditSystemAdminUsersComponent implements OnInit {
       email: this.Email.value,
     }
 
-    this.userService.editUser(editUserBody).subscribe(res => {
-      console.log(res);
+    this.userService.editUser(editUserBody).subscribe((res: ApiResponseModel) => {
+      if (res.success) {
+        this.appEvents.showSuccessToast(res.message || "You have successfully added this user.");
+      }
     })
   }
 
