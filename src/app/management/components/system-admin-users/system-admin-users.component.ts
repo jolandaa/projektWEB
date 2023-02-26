@@ -13,7 +13,7 @@ import {ApiResponseModel} from "../../../shared/models/api-response.model";
 })
 export class SystemAdminUsersComponent implements OnInit {
 
-  displayedColumns: string[] = ['user_id', 'username', 'first_name', 'last_name', 'email', 'role', 'status', 'actions'];
+  displayedColumns: string[] = ['user_id', 'username', 'first_name', 'last_name', 'email', 'role', 'created_date', 'status', 'actions'];
   dataSource!: SystemAdminUsersModel[];
 
   constructor(private adminUsersService: AdminUsersService,

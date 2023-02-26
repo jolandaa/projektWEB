@@ -5,22 +5,23 @@
         <div class="row justify-content-center">
           <div class="col-4">
             <form [formGroup]="loginForm">
-              <div class="login-form">
+              <div class="login-form text-center">
                 <div class="form-control p-0">
                   <div class="input-content">
-                    <input type="text" formControlName="email">
+                    <input type="email" formControlName="email" placeholder="Enter your email">
                     <span></span>
                   </div>
                 </div>
                 <div class="form-control p-0">
                   <div class="input-content">
-                    <input type="text" formControlName="password">
+                    <input type="password" formControlName="password" placeholder="Enter your password">
                     <span></span>
                   </div>
                 </div>
                 <div class="py-2 text-center">
                   <button (click)="login()">Login</button>
                 </div>
+                <a class="text-center" (click)="forgotPass()">Forgot Password?</a>
               </div>
             </form>
           </div>

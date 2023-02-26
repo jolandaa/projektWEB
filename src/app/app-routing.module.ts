@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {SigninComponent} from "./shared/components/signin/signin.component";
+import {ForgotPasswComponent} from "./shared/components/forgot-passw/forgot-passw.component";
 
 const routes: Routes = [
   {
     path: "login",
     component: SigninComponent,
+  },
+  {
+    path: "forgot-passw/:token",
+    component: ForgotPasswComponent,
   },
   {
     path: "client",

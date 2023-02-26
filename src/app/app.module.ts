@@ -10,11 +10,15 @@ import {SigninComponent} from "./shared/components/signin/signin.component";
 import {TOKEN_INTERCEPTOR} from "./auth/interceptors";
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
 import {AppNotificationModule} from "./shared/components/app-notification/app-notification.module";
+import { ForgotPasswComponent } from './shared/components/forgot-passw/forgot-passw.component';
+import { SuccessCreationModalComponent } from './shared/modals/success-creation-modal/success-creation-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent
+    SigninComponent,
+    ForgotPasswComponent,
+    SuccessCreationModalComponent
   ],
   imports: [
     BrowserModule,

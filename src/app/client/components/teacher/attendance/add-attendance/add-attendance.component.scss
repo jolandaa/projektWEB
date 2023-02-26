@@ -1,0 +1,39 @@
+.attendance-col {
+  input {
+    display: none;
+  }
+
+  label {
+    display: inline-block;
+    color: #9698d6;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    pedding: 6px 0;
+    font-size: 12px;
+    border-radius: 20px;
+    transition: all 0.3s;
+    border: 1px solid #333;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+
+  .present:checked + label {
+    border: 1px solid #5e81f4;
+    background: #5e81f4;
+    color: #fff;
+  }
+
+  .leave:checked + label {
+    border: 1px solid #9698d6;
+    background: #9698d6;
+    color: #fff;
+  }
+
+  .absent:checked + label {
+    border: 1px solid #ff808b;
+    background: #ff808b;
+    color: #fff;
+  }
+}
+

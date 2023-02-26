@@ -13,7 +13,7 @@ import {ApiResponseModel} from "../../../shared/models/api-response.model";
 })
 export class SchoolsComponent implements OnInit {
 
-  displayedColumns: string[] = ['school_id', 'name', 'description', 'street', 'city', 'country', 'zipCode', 'actions'];
+  displayedColumns: string[] = ['school_id', 'name', 'description', 'street', 'city', 'country', 'zipCode', 'created_date', 'actions'];
   dataSource!: SchoolModel[];
 
   constructor(private schoolService: SchoolsService,

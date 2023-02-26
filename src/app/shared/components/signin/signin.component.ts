@@ -4,6 +4,7 @@ import {AccountService} from "../../../auth/services/account.service";
 import {LoginUserEntity} from "../../entities/login-user.entity";
 import {Router} from "@angular/router";
 import {User, UserRoles} from "../../models/login-user.model";
+import {ApiResponseModel} from "../../models/api-response.model";
 
 @Component({
   selector: 'app-signin',
@@ -32,9 +33,9 @@ export class SigninComponent implements OnInit {
           const user: User = response.user;
           localStorage.setItem('user', JSON.stringify(user));
           if (user.role == UserRoles.SystemAdmin) {
-            this.router.navigate(['/admin']);
+            this.router.navigate(['/admin/dashboard']);
           } else {
-            this.router.navigate(['/client']);
+            this.router.navigate(['/client/dashboard']);
           }
         } else {
 
@@ -44,6 +45,21 @@ export class SigninComponent implements OnInit {
 
       }
     );
+  }
+
+  forgotPass() {
+    if (this.loginForm.get('email')) {
+      this.accountService.sendLink({email: this.loginForm.get('email')?.value}).subscribe((res: ApiResponseModel) => {
+        console.log(res)
+        if (res.success) {
+          localStorage.setItem('forgot-pass-data', JSON.stringify(res.data));
+          this.router.navigate(['/forgot-passw', res.data.token]);
+        }
+      })
+    } else {
+
+    }
+
   }
 
 }

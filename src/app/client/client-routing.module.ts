@@ -20,6 +20,13 @@ import {EditStudentComponent} from "./components/students/edit-student/edit-stud
 import {ViewChildrenComponent} from "./components/parents/view-children/view-children.component";
 import {ParentStudentsComponent} from "./components/parent-students/parent-students.component";
 import {TeacherClassesComponent} from "./components/teachers/teacher-classes/teacher-classes.component";
+import {TchClassesComponent} from "./components/teacher/tch-classes/tch-classes.component";
+import {AddAttendanceComponent} from "./components/teacher/attendance/add-attendance/add-attendance.component";
+import {StudentAttendancesComponent} from "./components/parent-students/student-attendances/student-attendances.component";
+import {AddGradeComponent} from "./components/teacher/grades/add-grade/add-grade.component";
+import {ClassGradesComponent} from "./components/teacher/grades/class-grades/class-grades.component";
+import {StudentMarksComponent} from "./components/parent-students/student-marks/student-marks.component";
+import {AccountSettingsComponent} from "./components/account-settings/account-settings.component";
 
 const routes: Routes = [
   {
@@ -28,13 +35,23 @@ const routes: Routes = [
     canActivate: [RoleGuard],
     children: [
       {
+        path: '',
+        redirectTo: 'dashboard'
+      },
+      {
         path: "dashboard",
         component: DashboardComponent
+      },
+      {
+        path: "account-settings",
+        component: AccountSettingsComponent
       },
       {
         path: "institute-profile",
         component: InstituteProfileComponent
       },
+
+      // admin components
       {
         path: "classes",
         component: ClassesComponent
@@ -95,9 +112,35 @@ const routes: Routes = [
         path: "view-children/:id",
         component: ViewChildrenComponent
       },
+      // teacher components
+      {
+        path: 'teacher/classes',
+        component: TchClassesComponent
+      },
+      {
+        path: 'teacher/add-attendance',
+        component: AddAttendanceComponent
+      },
+      {
+        path: 'teacher/add-grade',
+        component: AddGradeComponent
+      },
+      {
+        path: 'teacher/class-grades',
+        component: ClassGradesComponent
+      },
+      // parent components
       {
         path: "parent/students",
         component: ParentStudentsComponent
+      },
+      {
+        path: "student-attendances/:student_id",
+        component: StudentAttendancesComponent
+      },
+      {
+        path: "student-marks/:student_id",
+        component: StudentMarksComponent
       }
     ]
   }

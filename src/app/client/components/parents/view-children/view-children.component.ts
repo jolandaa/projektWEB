@@ -12,7 +12,7 @@ export class ViewChildrenComponent implements OnInit {
 
   parent_id = this.route.snapshot.params['id'];
   displayedColumns: string[] = ['nr_amzes', 'first_name', 'last_name', 'email', 'date_of_join', 'gender', 'date_of_birth', 'mobile_no'];
-  dataSource!: SchoolModel[];
+  dataSource!: any[];
 
   constructor(private studentService: StudentsService,
               private route: ActivatedRoute) { }

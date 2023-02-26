@@ -4,6 +4,8 @@ import {User, UserRoles} from "../../../../shared/models/login-user.model";
 import {StudentsService} from "../../../services/students.service";
 import {ClassesService} from "../../../services/classes.service";
 import {ParentsService} from "../../../services/parents.service";
+import {AppEvents} from "../../../../app-events.service";
+import {ApiResponseModel} from "../../../../shared/models/api-response.model";
 
 @Component({
   selector: 'app-add-student',
@@ -22,7 +24,8 @@ export class AddStudentComponent implements OnInit {
   constructor(private studentService: StudentsService,
               private classesService: ClassesService,
               private parentsService: ParentsService,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private appEvents: AppEvents) { }
 
   ngOnInit(): void {
     this.loggedUser = JSON.parse(<string>localStorage.getItem('user'));
@@ -70,6 +73,10 @@ export class AddStudentComponent implements OnInit {
 
 
   addStudent() {
+    if (this.addStudentForm.invalid) {
+      this.appEvents.showFailureToast("You have to complete all required fields!");
+      return;
+    }
     const addStudent = {
       school_id: this.loggedUser.school_id,
       nr_amzes: this.nr_amzes.value,
@@ -93,8 +100,10 @@ export class AddStudentComponent implements OnInit {
       mother_mobile_no: this.mother_mobile_no.value,
     };
 
-    this.studentService.addStudent(addStudent).subscribe(res => {
-      console.log(res);
+    this.studentService.addStudent(addStudent).subscribe((res: ApiResponseModel) => {
+      if (res.success) {
+        this.appEvents.showSuccessToast(res.message || "You have successfully added this student.");
+      }
     })
   }
 

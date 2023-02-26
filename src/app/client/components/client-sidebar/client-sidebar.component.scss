@@ -1,0 +1,14 @@
+.mat-expansion-panel {
+  background: transparent;
+  color: white;
+  box-shadow: none;
+  border: 0;
+
+  .mat-expansion-panel-header-title {
+    color: white;
+  }
+
+  ::ng-deep  .mat-expansion-indicator::after {
+    border-color: white;
+  }
+}

@@ -36,8 +36,8 @@ export class StudentsService {
     );
   }
 
-  deleteStudent(student_id: string, user_id: string) {
-    return this.http.post<any>(this.baseUrl + 'students/delete.php', {student_id,user_id}).pipe(
+  deleteStudent(nr_amzes: string) {
+    return this.http.post<any>(this.baseUrl + 'students/delete.php', {nr_amzes}).pipe(
       map((data: any) => data),
       tap((data: any) => data),
       catchError((error) => of(error))

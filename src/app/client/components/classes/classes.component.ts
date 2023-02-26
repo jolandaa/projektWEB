@@ -12,7 +12,7 @@ import {ClassesModel} from "../../models/classes.model";
 })
 export class ClassesComponent implements OnInit {
 
-  displayedColumns: string[] = ['class_id', 'name', 'description', 'year', 'teacher', 'students', 'actions'];
+  displayedColumns: string[] = ['class_id', 'name', 'description', 'year', 'created_date', 'teacher', 'students', 'actions'];
   dataSource!: ClassesModel[];
   loggedUser!: User;
 

@@ -48,7 +48,7 @@
   <div class="col-md-4">
     <label for="parentUser" class="form-label">Parent</label>
     <select id="parentUser" class="form-select" formControlName="parent_id">
-      <option selected>Choose...</option>
+      <option selected [value]="null">Choose...</option>
       <option [value]="parent?.parent_id" *ngFor="let parent of parentsList">{{parent?.username}}</option>
     </select>
   </div>
@@ -56,7 +56,7 @@
   <div class="col-md-4">
     <label for="classId" class="form-label">Class</label>
     <select id="classId" class="form-select" formControlName="class_id">
-      <option selected>Choose...</option>
+      <option selected [value]="null">Choose...</option>
       <option [value]="class?.class_id" *ngFor="let class of classesList">{{class?.class_name}}</option>
     </select>
   </div>
@@ -84,11 +84,11 @@
 
   <fieldset class="col-12 row mt-2">
 
-    <legend>Father Information</legend>
+    <legend>Mother Information</legend>
 
     <div class="col-md-6">
       <label for="mother_name" class="form-label">Mother Name</label>
-      <input type="text" class="form-control" id="mother_name" formControlName="mother_name">
+      <input type="text" class="form-control" id="mother_name" formControlName="mother_first_name">
     </div>
     <div class="col-md-6">
       <label for="mother_mobile_no" class="form-label">Mother mobile no</label>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {User, UserRoles} from "../../../../shared/models/login-user.model";
 import {ParentsService} from "../../../services/parents.service";
+import {AppEvents} from "../../../../app-events.service";
+import {ApiResponseModel} from "../../../../shared/models/api-response.model";
 
 @Component({
   selector: 'app-add-parent',
@@ -15,7 +17,8 @@ export class AddParentComponent implements OnInit {
   userRole = UserRoles;
 
   constructor(private parentService: ParentsService,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private appEvents: AppEvents) { }
 
   ngOnInit(): void {
     this.loggedUser = JSON.parse(<string>localStorage.getItem('user'));
@@ -29,7 +32,12 @@ export class AddParentComponent implements OnInit {
 
 
   addParent() {
-    const addClass = {
+    if (this.addParentForm.invalid) {
+      this.appEvents.showFailureToast("You have to complete all required fields!");
+      return;
+    }
+
+    const addParent = {
       school_id: this.loggedUser.school_id,
       first_name: this.firstname.value,
       last_name: this.lastname.value,
@@ -39,8 +47,10 @@ export class AddParentComponent implements OnInit {
       role: this.userRole.Parent
     };
 
-    this.parentService.addParent(addClass).subscribe(res => {
-      console.log(res);
+    this.parentService.addParent(addParent).subscribe((res: ApiResponseModel) => {
+      if (res.success) {
+        this.appEvents.showSuccessToast(res.message || "You have successfully added this parent.");
+      }
     })
   }
 

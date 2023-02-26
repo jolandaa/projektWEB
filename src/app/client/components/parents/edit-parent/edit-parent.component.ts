@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {User, UserRoles} from "../../../../shared/models/login-user.model";
 import {ParentsService} from "../../../services/parents.service";
 import {ActivatedRoute} from "@angular/router";
+import {AppEvents} from "../../../../app-events.service";
+import {ApiResponseModel} from "../../../../shared/models/api-response.model";
 
 @Component({
   selector: 'app-edit-parent',
@@ -20,7 +22,8 @@ export class EditParentComponent implements OnInit {
 
   constructor(private parentService: ParentsService,
               private route: ActivatedRoute,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private appEvents: AppEvents) { }
 
   ngOnInit(): void {
     this.loggedUser = JSON.parse(<string>localStorage.getItem('user'));
@@ -47,7 +50,12 @@ export class EditParentComponent implements OnInit {
   }
 
   editParent() {
-    const addClass = {
+    if (this.editParentForm.invalid) {
+      this.appEvents.showFailureToast("You have to complete all required fields!");
+      return;
+    }
+
+    const editParent = {
       parent_id: this.parent_id,
       user_id: this.parentData.user_id,
       school_id: this.loggedUser.school_id,
@@ -57,8 +65,10 @@ export class EditParentComponent implements OnInit {
       username: this.firstname.value + '.' + this.lastname.value,
     };
 
-    this.parentService.editParent(addClass).subscribe(res => {
-      console.log(res);
+    this.parentService.editParent(editParent).subscribe((res: ApiResponseModel) => {
+      if (res.success) {
+        this.appEvents.showSuccessToast(res.message || "You have successfully edited this parent.");
+      }
     })
   }
 

@@ -1,1 +1,29 @@
-<p>dashboard works!</p>
+<div class="dashboard-page">
+  <div>
+    <div class="row">
+      <div class="col-md-6 col-xl-3">
+        <a>
+          <div class="card bg-m-dblue order-card m-round">
+            <div class="card-block ">
+              <h6 class="m-b-20">Total Schools</h6>
+              <h2 class="text-right"><i class="ti-user f-left"></i><span>{{systemAdminDashboard.totalSchools}}</span></h2>
+              <p class="m-b-0">This Month<span class="f-right">{{systemAdminDashboard.totalSchoolsThisMonth}}</span></p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xl-3">
+        <a>
+          <div class="card bg-m-gray m-round order-card">
+            <div class="card-block">
+              <h6 class="m-b-20">Total Admin Users</h6>
+              <h2 class="text-right"><i class="ti-briefcase f-left"></i><span>{{systemAdminDashboard.totalAdminUsers}}</span></h2>
+              <p class="m-b-0">This Month<span class="f-right">{{systemAdminDashboard.totalAdminUsersThisMonth}}</span></p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

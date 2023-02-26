@@ -22,7 +22,10 @@ const routes: Routes = [
     component: MainComponent,
     canActivate: [RoleGuard],
     children: [
-
+      {
+        path: '',
+        redirectTo: 'dashboard'
+      },
       {
         path: "dashboard",
         component: DashboardComponent,

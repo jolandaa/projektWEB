@@ -14,7 +14,7 @@ import { ClassesComponent } from './components/classes/classes.component';
 import { TeachersComponent } from './components/teachers/teachers.component';
 import { StudentsComponent } from './components/students/students.component';
 import { ParentsComponent } from './components/parents/parents.component';
-import {CommonModule} from "@angular/common";
+import {CommonModule, DatePipe} from "@angular/common";
 import {MatTableModule} from "@angular/material/table";
 import { AddClassComponent } from './components/classes/add-class/add-class.component';
 import { EditClassComponent } from './components/classes/edit-class/edit-class.component';
@@ -34,6 +34,14 @@ import { EditStudentComponent } from './components/students/edit-student/edit-st
 import { ViewChildrenComponent } from './components/parents/view-children/view-children.component';
 import { ParentStudentsComponent } from './components/parent-students/parent-students.component';
 import { TeacherClassesComponent } from './components/teachers/teacher-classes/teacher-classes.component';
+import { TchClassesComponent } from './components/teacher/tch-classes/tch-classes.component';
+import { AddAttendanceComponent } from './components/teacher/attendance/add-attendance/add-attendance.component';
+import {MatExpansionModule} from "@angular/material/expansion";
+import { StudentAttendancesComponent } from './components/parent-students/student-attendances/student-attendances.component';
+import { AddGradeComponent } from './components/teacher/grades/add-grade/add-grade.component';
+import { ClassGradesComponent } from './components/teacher/grades/class-grades/class-grades.component';
+import { StudentMarksComponent } from './components/parent-students/student-marks/student-marks.component';
+import { AccountSettingsComponent } from './components/account-settings/account-settings.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +64,14 @@ import { TeacherClassesComponent } from './components/teachers/teacher-classes/t
     EditStudentComponent,
     ViewChildrenComponent,
     ParentStudentsComponent,
-    TeacherClassesComponent
+    TeacherClassesComponent,
+    TchClassesComponent,
+    AddAttendanceComponent,
+    StudentAttendancesComponent,
+    AddGradeComponent,
+    ClassGradesComponent,
+    StudentMarksComponent,
+    AccountSettingsComponent,
   ],
     imports: [
         CommonModule,
@@ -75,6 +90,7 @@ import { TeacherClassesComponent } from './components/teachers/teacher-classes/t
         HttpClientModule,
         FormsModule,
         MatSelectModule,
+        MatExpansionModule,
     ],
   providers: [
 

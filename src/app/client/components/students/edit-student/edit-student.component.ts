@@ -5,6 +5,8 @@ import {StudentsService} from "../../../services/students.service";
 import {ClassesService} from "../../../services/classes.service";
 import {ParentsService} from "../../../services/parents.service";
 import {ActivatedRoute} from "@angular/router";
+import {AppEvents} from "../../../../app-events.service";
+import {ApiResponseModel} from "../../../../shared/models/api-response.model";
 
 @Component({
   selector: 'app-edit-student',
@@ -27,7 +29,8 @@ export class EditStudentComponent implements OnInit {
               private classesService: ClassesService,
               private parentsService: ParentsService,
               private route: ActivatedRoute,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private appEvents: AppEvents) { }
 
   ngOnInit(): void {
     this.loggedUser = JSON.parse(<string>localStorage.getItem('user'));
@@ -89,7 +92,7 @@ export class EditStudentComponent implements OnInit {
 
 
   getClassesList() {
-    this.classesService.getClassesList(this.loggedUser.school_id).subscribe(res => {
+    this.classesService.getClassesList(this.loggedUser.school_id || this.loggedUser.teacher_profile?.school_id || this.loggedUser.parent_profile?.school_id).subscribe(res => {
       if (res?.success) {
         this.classesList = res.list;
       }
@@ -97,7 +100,7 @@ export class EditStudentComponent implements OnInit {
   }
 
   getParentsList() {
-    this.parentsService.getParentList(this.loggedUser.school_id).subscribe(res => {
+    this.parentsService.getParentList(this.loggedUser.school_id || this.loggedUser.teacher_profile?.school_id || this.loggedUser.parent_profile?.school_id).subscribe(res => {
       if (res?.success) {
         this.parentsList = res.list;
       }
@@ -106,8 +109,12 @@ export class EditStudentComponent implements OnInit {
 
 
   editStudent() {
+    if (this.editStudentForm.invalid) {
+      this.appEvents.showFailureToast("You have to complete all required fields!");
+      return;
+    }
     const editStudent = {
-      school_id: this.loggedUser.school_id,
+      school_id: this.loggedUser.school_id || this.loggedUser.teacher_profile?.school_id || this.loggedUser.parent_profile?.school_id,
       nr_amzes: this.nr_amzes.value,
       first_name: this.firstname.value,
       last_name: this.lastname.value,
@@ -129,8 +136,10 @@ export class EditStudentComponent implements OnInit {
       mother_mobile_no: this.mother_mobile_no.value,
     };
 
-    this.studentService.editStudent(editStudent).subscribe(res => {
-      console.log(res);
+    this.studentService.editStudent(editStudent).subscribe((res: ApiResponseModel) => {
+      if (res.success) {
+        this.appEvents.showSuccessToast(res.message || "You have successfully edited this student.");
+      }
     })
   }
 

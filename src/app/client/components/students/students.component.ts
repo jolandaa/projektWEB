@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SchoolModel} from "../../../management/models/school-list.model";
 import {User} from "../../../shared/models/login-user.model";
-import {TeachersService} from "../../services/teachers.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmModalComponent} from "../../../shared/modals/confirm-modal";
 import {StudentsService} from "../../services/students.service";
@@ -14,7 +13,7 @@ import {StudentsService} from "../../services/students.service";
 export class StudentsComponent implements OnInit {
 
   displayedColumns: string[] = ['nr_amzes', 'first_name', 'last_name', 'email', 'date_of_join', 'gender', 'date_of_birth', 'mobile_no', 'parent_id','actions'];
-  dataSource!: SchoolModel[];
+  dataSource!: any[];
   loggedUser!: User;
 
   constructor(private studentsService: StudentsService,
@@ -34,10 +33,12 @@ export class StudentsComponent implements OnInit {
     })
   }
 
-  deleteStudent(student_id: string,user_id: string) {
+  deleteStudent(nr_amzes: string) {
     let dialogRef = this.dialog.open(ConfirmModalComponent, {
       data: {
-        cancelText: 'I18N.DISCARD'
+        cancelText: 'Discard',
+        title: "Delete student",
+        message: "Are you sure deleting this student?"
       },
       autoFocus: false,
       panelClass: 'app-modal'
@@ -46,7 +47,7 @@ export class StudentsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(res => {
       console.log(res);
       if (res === 'submit') {
-        this.studentsService.deleteStudent(student_id, user_id).subscribe(res => {
+        this.studentsService.deleteStudent(nr_amzes).subscribe(res => {
           if (res.success === 1) {
             this.getStudentList();
           } else {

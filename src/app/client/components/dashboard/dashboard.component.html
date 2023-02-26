@@ -1,1 +1,76 @@
-<p>dashboard works!</p>
+<div class="dashboard-page">
+ <ng-container *ngIf="loggedUser.role === userRoles.Admin;then adminDashboard"></ng-container>
+ <ng-container *ngIf="loggedUser.role === userRoles.Teacher;then teacherDashboard"></ng-container>
+ <ng-container *ngIf="loggedUser.role === userRoles.Parent;then parentDashboard"></ng-container>
+</div>
+
+<ng-template #adminDashboard>
+  <div>
+    <div class="row">
+      <div class="col-md-6 col-xl-3">
+        <a [routerLink]="['../classes']">
+          <div class="card bg-m-dblue order-card m-round">
+            <div class="card-block ">
+              <h6 class="m-b-20">Total Classes</h6>
+              <h2 class="text-right"><i class="ti-user f-left"></i><span>{{adminDashboardData.totalClasses}}</span></h2>
+              <p class="m-b-0">This Month<span class="f-right">{{adminDashboardData.totalClassesThisMonth}}</span></p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xl-3">
+        <a [routerLink]="['../teachers']">
+          <div class="card bg-m-gray m-round order-card">
+            <div class="card-block">
+              <h6 class="m-b-20">Total Teachers</h6>
+              <h2 class="text-right"><i class="ti-briefcase f-left"></i><span>{{adminDashboardData.totalTeachers}}</span></h2>
+              <p class="m-b-0">This Month<span class="f-right">{{adminDashboardData.totalTeachersThisMonth}}</span></p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <a [routerLink]="['../students']">
+          <div class="card bg-m-orange order-card m-round">
+            <div class="card-block ">
+              <h6 class="m-b-20">Total Students</h6>
+              <h2 class="text-right"><i class="ti-user f-left"></i><span>{{adminDashboardData.totalStudents}}</span></h2>
+              <p class="m-b-0">This Month<span class="f-right">{{adminDashboardData.totalStudentsThisMonth}}</span></p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-xl-3">
+        <a [routerLink]="['../parents']">
+          <div class="card bg-m-blue1 m-round order-card">
+            <div class="card-block">
+              <h6 class="m-b-20">Total Parents</h6>
+              <h2 class="text-right"><i class="ti-briefcase f-left"></i><span>{{adminDashboardData.totalParents}}</span></h2>
+              <p class="m-b-0">This Month<span class="f-right">{{adminDashboardData.totalParentsThisMonth}}</span></p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #teacherDashboard></ng-template>
+<ng-template #parentDashboard>
+  <div>
+    <div class="row">
+      <div class="col-md-6 col-xl-3">
+        <a [routerLink]="['../classes']">
+          <div class="card bg-m-dblue order-card m-round">
+            <div class="card-block ">
+              <h6 class="m-b-20">Total Children</h6>
+              <h2 class="text-right"><i class="ti-user f-left"></i><span>{{parentDashboardData.totalStudents}}</span></h2>
+              <p class="m-b-0">This Month<span class="f-right">{{parentDashboardData.totalStudentsThisMonth}}</span></p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</ng-template>

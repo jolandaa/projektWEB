@@ -1,1 +1,18 @@
-<p>header works!</p>
+<div class="header-content">
+  <a>
+    <img src="/assets/logo.png">
+  </a>
+
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <img src="assets/unnamed.png" *ngIf="schoolData">
+    <span>{{schoolData?.name}}</span>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logOut()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</div>

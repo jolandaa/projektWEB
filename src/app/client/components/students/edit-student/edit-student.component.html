@@ -1,162 +1,110 @@
-<form class="example-form" [formGroup]="editStudentForm" (ngSubmit)="editStudent()">
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>nr_amzes</mat-label>
-          <input matInput formControlName="nr_amzes">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Name</mat-label>
-          <input matInput formControlName="firstname">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>lastname</mat-label>
-          <input matInput formControlName="lastname">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
 
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>email</mat-label>
-          <input matInput formControlName="email">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>date_of_join</mat-label>
-          <input matInput formControlName="date_of_join" type="date">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+<form class="row g-3" [formGroup]="editStudentForm" (ngSubmit)="editStudent()">
+  <div class="col-md-6">
+    <label for="nr_amzes" class="form-label">Nr Amzes</label>
+    <input type="number" class="form-control" id="nr_amzes" formControlName="nr_amzes">
+  </div>
+  <div class="col-md-6">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" formControlName="firstname">
+  </div>
+  <div class="col-md-6">
+    <label for="lastname" class="form-label">Lastname</label>
+    <input type="text" class="form-control" id="lastname" formControlName="lastname">
+  </div>
+  <div class="col-md-6">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" formControlName="email">
+  </div>
+  <div class="col-md-6">
+    <label for="mobile_no" class="form-label">Mobile No.</label>
+    <input type="number" class="form-control" id="mobile_no" formControlName="mobile_no">
+  </div>
+  <div class="col-md-2">
+    <label class="form-label">Gender</label>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" id="female" value="F" formControlName="gender">
+      <label class="form-check-label" for="female">
+        Female
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" id="male" value="M" formControlName="gender">
+      <label class="form-check-label" for="male">
+        Male
+      </label>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <label for="date_of_birth" class="form-label">Date of birth</label>
+    <input type="date" class="form-control" id="date_of_birth" formControlName="date_of_birth">
+  </div>
 
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field appearance="fill">
-          <mat-label>Class</mat-label>
-          <mat-select formControlName="class_id">
-            <mat-option>Clear</mat-option>
-            <mat-option [value]="user?.class_id" *ngFor="let user of classesList">{{user?.class_name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>mobile_no</mat-label>
-          <input matInput formControlName="mobile_no" type="number">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+  <div class="col-md-2">
+    <label for="date_of_birth" class="form-label">Date of join</label>
+    <input type="date" class="form-control" id="date_of_start" formControlName="date_of_join">
+  </div>
 
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>father_name</mat-label>
-          <input matInput formControlName="father_name">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>gender</mat-label>
-          <input matInput formControlName="gender">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+  <div class="col-md-4">
+    <label for="parentUser" class="form-label">Parent</label>
+    <select id="parentUser" class="form-select" formControlName="parent_id">
+      <option selected>Choose...</option>
+      <option [value]="parent?.parent_id" *ngFor="let parent of parentsList">{{parent?.username}}</option>
+    </select>
+  </div>
 
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
+  <div class="col-md-4">
+    <label for="classId" class="form-label">Class</label>
+    <select id="classId" class="form-select" formControlName="class_id">
+      <option selected>Choose...</option>
+      <option [value]="class?.class_id" *ngFor="let class of classesList">{{class?.class_name}}</option>
+    </select>
+  </div>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Parent</mat-label>
-          <mat-select formControlName="parent_id">
-            <mat-option>Clear</mat-option>
-            <mat-option [value]="user?.parent_id" *ngFor="let user of parentsList">{{user?.username}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>picture</mat-label>
-          <input matInput formControlName="picture">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>date_of_birth</mat-label>
-          <input matInput formControlName="date_of_birth" type="date">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>father_mobile_no</mat-label>
-          <input matInput formControlName="father_mobile_no">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>father_education</mat-label>
-          <input matInput formControlName="father_education">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>father_profession</mat-label>
-          <input matInput formControlName="father_profession">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>mother_first_name</mat-label>
-          <input matInput formControlName="mother_first_name">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>mother_education</mat-label>
-          <input matInput formControlName="mother_education">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>mother_profession</mat-label>
-          <input matInput formControlName="mother_profession">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>mother_mobile_no</mat-label>
-          <input matInput formControlName="mother_mobile_no">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+  <fieldset class="col-12 row mt-2">
+    <legend>Father Information</legend>
+    <div class="col-md-6">
+      <label for="father_name" class="form-label">Father Name</label>
+      <input type="text" class="form-control" id="father_name" formControlName="father_name">
+    </div>
+    <div class="col-md-6">
+      <label for="father_mobile_no" class="form-label">Father mobile no</label>
+      <input type="number" class="form-control" id="father_mobile_no" formControlName="father_mobile_no">
+    </div>
 
+    <div class="col-md-6">
+      <label for="father_education" class="form-label">Father Education</label>
+      <input type="text" class="form-control" id="father_education" formControlName="father_education">
+    </div>
+    <div class="col-md-6">
+      <label for="father_profession" class="form-label">Father Profession</label>
+      <input type="text" class="form-control" id="father_profession" formControlName="father_profession">
+    </div>
+  </fieldset>
 
-  <button type="submit">Add</button>
+  <fieldset class="col-12 row mt-2">
+
+    <legend>Mother Information</legend>
+
+    <div class="col-md-6">
+      <label for="mother_name" class="form-label">Mother Name</label>
+      <input type="text" class="form-control" id="mother_name" formControlName="mother_first_name">
+    </div>
+    <div class="col-md-6">
+      <label for="mother_mobile_no" class="form-label">Mother mobile no</label>
+      <input type="number" class="form-control" id="mother_mobile_no" formControlName="mother_mobile_no">
+    </div>
+
+    <div class="col-md-6">
+      <label for="mother_education" class="form-label">Mother Education</label>
+      <input type="text" class="form-control" id="mother_education" formControlName="mother_education">
+    </div>
+    <div class="col-md-6">
+      <label for="mother_profession" class="form-label">Mother Profession</label>
+      <input type="text" class="form-control" id="mother_profession" formControlName="mother_profession">
+    </div>
+  </fieldset>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Edit</button>
+  </div>
 </form>

@@ -27,6 +27,13 @@ export class TokenInterceptor implements HttpInterceptor {
       request = this.addToken(request, parsedUser.token);
     }
 
+    const forgotPasswordData: any = localStorage.getItem('forgot-pass-data')
+    const parsedForgotPasswordData = JSON.parse(forgotPasswordData);
+
+    if (parsedForgotPasswordData) {
+      request = this.addToken(request, parsedForgotPasswordData.token);
+    }
+
     return next.handle(request).pipe(
       map(res => {
         return res

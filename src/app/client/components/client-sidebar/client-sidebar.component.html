@@ -1,44 +1,70 @@
-<button mat-button class="menu-button" [routerLink]="['./dashboard']">
-  <mat-icon>home</mat-icon>
+<button mat-button class="menu-button" [routerLink]="['./dashboard']" [routerLinkActive]="'active'">
   <span>Dashboard</span>
 </button>
-<button mat-button class="menu-button">
-  <mat-icon>person</mat-icon>
-  <span>Profile</span>
+<button mat-button class="menu-button" [routerLink]="['./account-settings']" [routerLinkActive]="'active'">
+  <span>Account Settings</span>
 </button>
-<div *ngIf="loggedUser?.school_id">
-  <button mat-button class="menu-button" [routerLink]="['./institute-profile']" *ngIf="loggedUser.role == userRoles.Admin">
-    <mat-icon>person</mat-icon>
+
+<ng-container *ngIf="loggedUser.role == userRoles.Admin; then adminMenu"></ng-container>
+<ng-container *ngIf="loggedUser.role == userRoles.Teacher; then teacherMenu"></ng-container>
+<ng-container *ngIf="loggedUser.role == userRoles.Parent; then parentMenu"></ng-container>
+<ng-template #adminMenu>
+  <button mat-button class="menu-button" [routerLink]="['./institute-profile']" [routerLinkActive]="'active'">
     <span>Institute profile</span>
   </button>
 
-  <button mat-button class="menu-button" [routerLink]="['classes']" *ngIf="loggedUser.role == userRoles.Admin">
-    <mat-icon>supervised_user_circle</mat-icon>
+  <button mat-button class="menu-button" [routerLink]="['classes']" [routerLinkActive]="'active'">
     <span>Classes</span>
   </button>
-  <button mat-button class="menu-button" [routerLink]="['teachers']" *ngIf="loggedUser.role == userRoles.Admin">
-    <mat-icon>school</mat-icon>
+  <button mat-button class="menu-button" [routerLink]="['teachers']" [routerLinkActive]="'active'">
     <span>Teachers</span>
   </button>
-  <button mat-button class="menu-button" [routerLink]="['students']" *ngIf="loggedUser.role == userRoles.Admin">
-    <mat-icon>school</mat-icon>
+  <button mat-button class="menu-button" [routerLink]="['students']" [routerLinkActive]="'active'">
     <span>Students</span>
   </button>
-  <button mat-button class="menu-button" [routerLink]="['parents']" *ngIf="loggedUser.role == userRoles.Admin">
-    <mat-icon>school</mat-icon>
+  <button mat-button class="menu-button" [routerLink]="['parents']" [routerLinkActive]="'active'">
     <span>Parents</span>
   </button>
   <mat-divider></mat-divider>
-</div>
+</ng-template>
 
-<div *ngIf="loggedUser?.role == userRoles.Parent">
-  <button mat-button class="menu-button" [routerLink]="['parent/students']">
-    <mat-icon>school</mat-icon>
+<ng-template #teacherMenu>
+  <button mat-button class="menu-button" [routerLink]="['teacher/classes']" [routerLinkActive]="'active'">
+    <span>Classes</span>
+  </button>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Attendance
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <button mat-button class="menu-button" [routerLink]="['teacher/add-attendance']" [routerLinkActive]="'active'">
+      <span>Mark Students <br> Attendance</span>
+    </button>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Grades
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <button mat-button class="menu-button" [routerLink]="['teacher/add-grade']" [routerLinkActive]="'active'">
+      <span>Mark Students <br> Grades</span>
+    </button>
+    <button mat-button class="menu-button" [routerLink]="['teacher/class-grades']" [routerLinkActive]="'active'">
+      <span>Class Results</span>
+    </button>
+  </mat-expansion-panel>
+</ng-template>
+
+<ng-template #parentMenu>
+  <button mat-button class="menu-button" [routerLink]="['parent/students']" [routerLinkActive]="'active'">
     <span>Students</span>
   </button>
-</div>
+</ng-template>
 
-<button mat-button class="menu-button" (click)="logOut()">
+
+<button mat-button class="menu-button logout-button" (click)="logOut()">
   <mat-icon>logout</mat-icon>
   <span>Log out</span>
 </button>

@@ -15,7 +15,7 @@ import {AppEvents} from "../../../app-events.service";
 export class TeachersComponent implements OnInit {
 
   displayedColumns: string[] = ['teacher_id', 'first_name', 'last_name', 'email', 'date_of_start', 'gender', 'date_of_birth', 'education', 'experience', 'classes','actions'];
-  dataSource!: SchoolModel[];
+  dataSource!: any[];
   loggedUser!: User;
 
   constructor(private teacherService: TeachersService,

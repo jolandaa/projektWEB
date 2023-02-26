@@ -5,6 +5,8 @@ import {TeachersService} from "../../services/teachers.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmModalComponent} from "../../../shared/modals/confirm-modal";
 import {ParentsService} from "../../services/parents.service";
+import {AppEvents} from "../../../app-events.service";
+import {ApiResponseModel} from "../../../shared/models/api-response.model";
 
 @Component({
   selector: 'app-parents',
@@ -14,11 +16,12 @@ import {ParentsService} from "../../services/parents.service";
 export class ParentsComponent implements OnInit {
 
   displayedColumns: string[] = ['parent_id', 'first_name', 'last_name', 'email' ,'view_children','actions'];
-  dataSource!: SchoolModel[];
+  dataSource!: any[];
   loggedUser!: User;
 
   constructor(private parentsService: ParentsService,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private appEvents: AppEvents) { }
 
   ngOnInit(): void {
     this.loggedUser = JSON.parse(<string>localStorage.getItem('user'));
@@ -33,10 +36,12 @@ export class ParentsComponent implements OnInit {
     })
   }
 
-  deleteTeacher(teacher_id: string,user_id: string) {
+  deleteParent(parent_id: string,user_id: string) {
     let dialogRef = this.dialog.open(ConfirmModalComponent, {
       data: {
-        cancelText: 'I18N.DISCARD'
+        cancelText: 'Discard',
+        title: "Delete parent",
+        message: "Are you sure deleting this parent?"
       },
       autoFocus: false,
       panelClass: 'app-modal'
@@ -45,11 +50,10 @@ export class ParentsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(res => {
       console.log(res);
       if (res === 'submit') {
-        this.parentsService.deleteParent(teacher_id, user_id).subscribe(res => {
+        this.parentsService.deleteParent(parent_id, user_id).subscribe((res: ApiResponseModel) => {
           if (res.success === 1) {
             this.getParentList();
-          } else {
-
+            this.appEvents.showSuccessToast(res.message || 'You have successfully deleted this parent.')
           }
         })
       }
