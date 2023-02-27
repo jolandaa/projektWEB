@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {SigninComponent} from "./shared/components/signin/signin.component";
 import {ForgotPasswComponent} from "./shared/components/forgot-passw/forgot-passw.component";
+import {SuccessRequestComponent} from "./shared/components/success-request/success-request.component";
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: "forgot-passw/:token",
     component: ForgotPasswComponent,
+  },
+  {
+    path: "success-requested",
+    component: SuccessRequestComponent,
   },
   {
     path: "client",

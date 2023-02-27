@@ -12,13 +12,15 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/materia
 import {AppNotificationModule} from "./shared/components/app-notification/app-notification.module";
 import { ForgotPasswComponent } from './shared/components/forgot-passw/forgot-passw.component';
 import { SuccessCreationModalComponent } from './shared/modals/success-creation-modal/success-creation-modal.component';
+import { SuccessRequestComponent } from './shared/components/success-request/success-request.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
     ForgotPasswComponent,
-    SuccessCreationModalComponent
+    SuccessCreationModalComponent,
+    SuccessRequestComponent
   ],
   imports: [
     BrowserModule,

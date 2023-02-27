@@ -39,8 +39,9 @@ export class TokenInterceptor implements HttpInterceptor {
         return res
       }),
       catchError(error => {
-        console.log(error)
-        this.appEvents.showFailureToast(error.error.error);
+        if (!error.url.includes('send_link')) {
+          this.appEvents.showFailureToast(error.error.error);
+        }
 
         if (error instanceof HttpErrorResponse && error.status === 401) {
           this.accountService.logout();

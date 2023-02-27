@@ -51,10 +51,8 @@ export class SigninComponent implements OnInit {
     if (this.loginForm.get('email')) {
       this.accountService.sendLink({email: this.loginForm.get('email')?.value}).subscribe((res: ApiResponseModel) => {
         console.log(res)
-        if (res.success) {
-          localStorage.setItem('forgot-pass-data', JSON.stringify(res.data));
-          this.router.navigate(['/forgot-passw', res.data.token]);
-        }
+        this.router.navigate(['/success-requested']);
+
       })
     } else {
 
