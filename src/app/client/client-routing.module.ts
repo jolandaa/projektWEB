@@ -27,6 +27,7 @@ import {AddGradeComponent} from "./components/teacher/grades/add-grade/add-grade
 import {ClassGradesComponent} from "./components/teacher/grades/class-grades/class-grades.component";
 import {StudentMarksComponent} from "./components/parent-students/student-marks/student-marks.component";
 import {AccountSettingsComponent} from "./components/account-settings/account-settings.component";
+import {StudentInfoComponent} from "./components/students/student-info/student-info.component";
 
 const routes: Routes = [
   {
@@ -95,6 +96,10 @@ const routes: Routes = [
       {
         path: "edit-student/:id",
         component: EditStudentComponent
+      },
+      {
+        path: "view-student/:id",
+        component: StudentInfoComponent
       },
       {
         path: "parents",

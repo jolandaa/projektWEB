@@ -43,7 +43,7 @@ export class TokenInterceptor implements HttpInterceptor {
           this.appEvents.showFailureToast(error.error.error);
         }
 
-        if (error instanceof HttpErrorResponse && error.status === 401) {
+        if (error instanceof HttpErrorResponse && (error.status === 401 || error.status === 403)) {
           this.accountService.logout();
           this.router.navigateByUrl(`/login`);
         }

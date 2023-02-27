@@ -42,6 +42,7 @@ import { AddGradeComponent } from './components/teacher/grades/add-grade/add-gra
 import { ClassGradesComponent } from './components/teacher/grades/class-grades/class-grades.component';
 import { StudentMarksComponent } from './components/parent-students/student-marks/student-marks.component';
 import { AccountSettingsComponent } from './components/account-settings/account-settings.component';
+import { StudentInfoComponent } from './components/students/student-info/student-info.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { AccountSettingsComponent } from './components/account-settings/account-
     ClassGradesComponent,
     StudentMarksComponent,
     AccountSettingsComponent,
+    StudentInfoComponent,
   ],
     imports: [
         CommonModule,
