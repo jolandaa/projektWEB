@@ -56,7 +56,7 @@
         <th mat-header-cell *matHeaderCellDef> Attendance Value </th>
         <td mat-cell *matCellDef="let element" class="attendance-col">
           <input type="radio" (click)="element.attendance_value = 1" [value]="1" [id]="element.nr_amzes + 'P'" class="present" [checked]="element.attendance_value === 1"><label title="Present" [for]="element.nr_amzes + 'P'">P</label>
-          <input type="radio" (click)="element.attendance_value = 3" [value]="3" [id]="element.nr_amzes + 'A'" class="absent" [checked]="element.attendance_value === 2"><label title="Absent" [for]="element.nr_amzes + 'A'">A</label>
+          <input type="radio" (click)="element.attendance_value = 2" [value]="2" [id]="element.nr_amzes + 'A'" class="absent" [checked]="element.attendance_value === 2"><label title="Absent" [for]="element.nr_amzes + 'A'">A</label>
         </td>
       </ng-container>
 

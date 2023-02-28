@@ -20,6 +20,11 @@
                   (click)="deleteStudent(student.nr_amzes)" name="edelete" title="Delete">
             <mat-icon>delete</mat-icon>
           </button>
+
+          <button class="btn btn-sm m-round bg-m-blue1 m-white action-button" type="submit"
+                  (click)="generateReport(student.nr_amzes, student.first_name + '_' + student.last_name)" name="edelete" title="Delete">
+            <mat-icon>download</mat-icon>
+          </button>
         </form>
       </div>
     </ng-container>
@@ -41,3 +46,5 @@
   </div>
 
 </div>
+
+

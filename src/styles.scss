@@ -116,7 +116,7 @@ app-header {
     float:left;
     text-align:center;
     margin:10px;
-    width:155px;
+    width:165px;
     line-height:15px;
     background:#fff;
     padding:15px;
@@ -148,6 +148,9 @@ app-header {
 
     &:nth-child(2) {
       margin-left: 5px;
+      margin-right: 5px;
+    }
+    &:nth-child(3) {
       margin-right: 5px;
     }
 

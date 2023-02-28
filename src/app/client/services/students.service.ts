@@ -67,4 +67,15 @@ export class StudentsService {
       catchError((error) => of(error))
     );
   }
+
+  generateReport(nr_amzes: string){
+    const httpOptions = {
+      responseType: 'blob' as 'json'
+  };
+    return this.http.get<any>(this.baseUrl + 'students/generateReport.php?nr_amzes=' + nr_amzes, httpOptions).pipe(
+      map((data: any) => data),
+      tap((data: any) => data),
+      catchError((error) => of(error))
+    );
+  }
 }

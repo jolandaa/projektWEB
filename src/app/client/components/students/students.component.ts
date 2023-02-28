@@ -58,4 +58,18 @@ export class StudentsComponent implements OnInit {
     })
   }
 
+
+  generateReport(nr_amzes: string, student_name: string) {
+    this.studentsService.generateReport(nr_amzes).subscribe((data) => {
+
+      const blob = new Blob([data], {type: 'application/pdf'});
+
+      var downloadURL = window.URL.createObjectURL(data);
+      var link = document.createElement('a');
+      link.href = downloadURL;
+      link.download = `${student_name}_report.pdf`;
+      link.click();
+
+    });
+  }
 }
