@@ -39,7 +39,7 @@ export class TokenInterceptor implements HttpInterceptor {
         return res
       }),
       catchError(error => {
-        if (!error.url.includes('send_link')) {
+        if (!error.url.includes('send_link') && !error.url.includes('attendance/edit.php') && !error.url.includes('grades/edit.php')) {
           this.appEvents.showFailureToast(error.error.error);
         }
 

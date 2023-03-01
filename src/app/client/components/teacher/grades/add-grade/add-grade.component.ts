@@ -185,10 +185,8 @@ export class AddGradeComponent implements OnInit {
     };
 
     this.gradeService.editGrade(addAttendance).subscribe((res: ApiResponseModel) => {
-      if (res.success) {
         this.appEvents.showSuccessToast(res.message || "You have successfully added this attendance.");
         this.router.navigate(['/client/teacher/class-grades']);
-      }
     })
   }
 

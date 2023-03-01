@@ -161,10 +161,8 @@ export class AddAttendanceComponent implements OnInit {
     };
 
     this.attendanceService.editAttendance(addAttendance).subscribe((res: ApiResponseModel) => {
-      if (res.success) {
-        this.appEvents.showSuccessToast(res.message || "You have successfully added this attendance.");
-        this.isTodayDateAdded();
-      }
+      this.appEvents.showSuccessToast(res.message || "You have successfully added this attendance.");
+      this.isTodayDateAdded();
     })
   }
 
