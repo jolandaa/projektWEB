@@ -10,7 +10,7 @@ const routes: Routes = [
     component: SigninComponent,
   },
   {
-    path: "forgot-passw/:token",
+    path: "forgot-passw/:token/:email",
     component: ForgotPasswComponent,
   },
   {
